@@ -26,6 +26,7 @@ include_directories(${Boost_INCLUDE_DIR})
 link_directories(${Boost_LIBRARY_DIRS})
 
 list(APPEND isl_sources
+    pn_generate_i_impl.cc
 )
 
 set(isl_sources "${isl_sources}" PARENT_SCOPE)

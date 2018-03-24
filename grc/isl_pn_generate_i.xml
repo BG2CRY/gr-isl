@@ -1,0 +1,12 @@
+<block>
+  <name>PN Generate I</name>
+  <key>isl_pn_generate_i</key>
+  <category>[ISL]</category>
+  <import>import isl</import>
+  <make>isl.pn_generate_i()</make>
+  <source>
+    <name>out</name>
+    <type>int</type>
+    <nports>2</nports>
+  </source>
+</block>
