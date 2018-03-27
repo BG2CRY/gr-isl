@@ -22,5 +22,7 @@
 ########################################################################
 install(FILES
     api.h
-    pn_generate_i.h DESTINATION include/isl
+    pn_generate_i.h
+    pmod.h
+    oqpsk_coherrent_demod.h DESTINATION include/isl
 )

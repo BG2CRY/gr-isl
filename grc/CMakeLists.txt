@@ -16,7 +16,8 @@
 # along with GNU Radio; see the file COPYING.  If not, write to
 # the Free Software Foundation, Inc., 51 Franklin Street,
 # Boston, MA 02110-1301, USA.
-
 install(FILES
-    isl_pn_generate_i.xml DESTINATION share/gnuradio/grc/blocks
+    isl_pn_generate_i.xml
+    isl_pmod.xml
+    isl_oqpsk_coherrent_demod.xml DESTINATION share/gnuradio/grc/blocks
 )

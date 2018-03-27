@@ -1,0 +1,15 @@
+<block>
+  <name>Pmod</name>
+  <key>isl_pmod</key>
+  <category>[ISL]</category>
+  <import>import isl</import>
+  <make>isl.pmod()</make>
+  <sink>
+    <name>in</name>
+    <type>float</type>
+  </sink>
+  <source>
+    <name>out</name>
+    <type>complex</type>
+  </source>
+</block>
