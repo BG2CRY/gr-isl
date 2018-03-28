@@ -11,6 +11,7 @@
 #include "isl/pn_generate_i.h"
 #include "isl/pmod.h"
 #include "isl/oqpsk_coherrent_demod.h"
+#include "isl/qpsk_decimator_cc.h"
 %}
 
 
@@ -20,3 +21,5 @@ GR_SWIG_BLOCK_MAGIC2(isl, pn_generate_i);
 GR_SWIG_BLOCK_MAGIC2(isl, pmod);
 %include "isl/oqpsk_coherrent_demod.h"
 GR_SWIG_BLOCK_MAGIC2(isl, oqpsk_coherrent_demod);
+%include "isl/qpsk_decimator_cc.h"
+GR_SWIG_BLOCK_MAGIC2(isl, qpsk_decimator_cc);

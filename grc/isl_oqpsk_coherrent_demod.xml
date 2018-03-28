@@ -96,7 +96,11 @@
     <type>complex</type>
   </sink>
   <source>
-    <name>out</name>
+    <name>out0</name>
+    <type>complex</type>
+  </source>
+  <source>
+    <name>out1</name>
     <type>complex</type>
   </source>
 </block>

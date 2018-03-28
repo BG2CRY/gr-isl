@@ -44,7 +44,7 @@ namespace gr {
     oqpsk_coherrent_demod_impl::oqpsk_coherrent_demod_impl(int samples_per_symbol, const std::vector<gr_complex> &taps, int opt_point, int pll, float pll_loop_bw, float pll_damping, float freq_max, float freq_min, int dttl, float dttl_loop_bw, float dttl_damping, float max_rate_deviation)
       : gr::block("oqpsk_coherrent_demod",
               gr::io_signature::make(1, 1, sizeof(gr_complex)),
-              gr::io_signature::make(1, 1, sizeof(gr_complex))),
+              gr::io_signature::make(2, 2, sizeof(gr_complex))),
 	      d_samples_per_symbol(samples_per_symbol), d_taps(taps), d_opt_point(opt_point), d_pll(pll), d_pll_loop_bw(pll_loop_bw), d_pll_damping(pll_damping), d_freq_max(freq_max), d_freq_min(freq_min), d_dttl(dttl), d_dttl_loop_bw(dttl_loop_bw), d_dttl_damping(dttl_damping), d_max_rate_deviation(max_rate_deviation)
     	{
 		d_mix_out = (gr_complex *)malloc(sizeof(gr_complex)*taps.size());		
@@ -92,6 +92,7 @@ namespace gr {
     {
       const gr_complex *in = (const gr_complex *) input_items[0];
       gr_complex *out = (gr_complex *) output_items[0];
+      gr_complex *out1 = (gr_complex *) output_items[1];
       int i_output = 0;
 
       for(int i=0; i<ninput_items[0]; i++)
@@ -176,6 +177,8 @@ namespace gr {
 			d_mix_out[j] = d_mix_out[j+1];
 		}
 		d_mix_out[d_taps.size()-1] = nco*in[i];
+/////////////////////////////////////////////////////////////////////////////
+		out1[i] = d_mix_out[d_taps.size()-1] ;		
 
 		for(int j=0; j<d_samples_per_symbol/2; j++)
 		{
@@ -189,17 +192,20 @@ namespace gr {
 			d_mf_out[d_samples_per_symbol/2] = d_mf_out[d_samples_per_symbol/2] + d_mix_out[j] * d_taps[j];
 		}
 
+		out[i].real() = d_mf_out[0].imag();
+		out[i].imag() = d_mf_out[d_samples_per_symbol/2].real();
+
 		float pd_out;
+
 		if( d_sample_in_symbol==d_opt_point )
 		{
+			add_item_tag(0, nitems_written(0)+i, pmt::mp("opt_point"), pmt::from_double(0.0) );
 			/* For opt_point=12, [B-1, B0], [B1, B2]... */
 			//out[i_output].real() = d_mf_out[0].real();
 			//out[i_output].imag() = d_mf_out[d_samples_per_symbol/2].imag();
 
 			/* For opt_point=4, [B0, B1], [B2, B3]... */
-			out[i_output].real() = d_mf_out[0].imag();
-			out[i_output].imag() = d_mf_out[d_samples_per_symbol/2].real();
-			i_output++;
+
 
 			/* For opt_point=12, [B-1, B0], [B1, B2]... */
 			//pd_out = d_mf_out[0].real()*d_mf_out[0].imag() - d_mf_out[d_samples_per_symbol/2].real()*d_mf_out[d_samples_per_symbol/2].imag();
@@ -251,7 +257,7 @@ namespace gr {
       consume_each (ninput_items[0]);
 
       // Tell runtime system how many output items we produced.
-      return i_output;
+      return ninput_items[0];
     }
 
   } /* namespace isl */

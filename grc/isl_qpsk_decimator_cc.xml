@@ -1,0 +1,19 @@
+<block>
+  <name>QPSK Decimator CC</name>
+  <key>isl_qpsk_decimator_cc</key>
+  <category>[ISL]</category>
+  <import>import isl</import>
+  <make>isl.qpsk_decimator_cc()</make>
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+  </sink>
+  <source>
+    <name>out0</name>
+    <type>complex</type>
+  </source>
+  <source>
+    <name>out1</name>
+    <type>complex</type>
+ </source>
+</block>
