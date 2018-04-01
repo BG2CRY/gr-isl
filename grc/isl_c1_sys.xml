@@ -1,0 +1,16 @@
+<block>
+  <name>C1 sys</name>
+  <key>isl_c1_sys</key>
+  <category>[ISL]</category>
+  <import>import isl</import>
+  <make>isl.c1_sys()</make>
+  <sink>
+    <name>in</name>
+    <type>float</type>
+  </sink>
+  <source>
+    <name>out</name>
+    <type>float</type>
+    <nports>2</nports>
+  </source>
+</block>

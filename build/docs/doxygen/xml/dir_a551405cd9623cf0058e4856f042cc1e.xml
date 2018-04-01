@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_a551405cd9623cf0058e4856f042cc1e" kind="dir">
+    <compoundname>isl</compoundname>
+    <innerfile refid="api_8h">api.h</innerfile>
+    <innerfile refid="oqpsk__coherrent__demod_8h">oqpsk_coherrent_demod.h</innerfile>
+    <innerfile refid="pmod_8h">pmod.h</innerfile>
+    <innerfile refid="pn__generate__i_8h">pn_generate_i.h</innerfile>
+    <innerfile refid="qpsk__decimator__cc_8h">qpsk_decimator_cc.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/lilac/gr-isl/include/isl/"/>
+  </compounddef>
+</doxygen>

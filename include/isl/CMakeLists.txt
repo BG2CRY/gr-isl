@@ -25,5 +25,6 @@ install(FILES
     pn_generate_i.h
     pmod.h
     oqpsk_coherrent_demod.h
-    qpsk_decimator_cc.h DESTINATION include/isl
+    qpsk_decimator_cc.h
+    c1_sys.h DESTINATION include/isl
 )
