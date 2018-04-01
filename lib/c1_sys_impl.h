@@ -31,6 +31,7 @@ namespace gr {
      private:
       float buf[1070];// 1070 = 214*5//Nothing to declare in this block.
       float filter_coeff[1070];
+      float sample_in_symbol;
 
      public:
       c1_sys_impl();
