@@ -31,6 +31,10 @@ list(APPEND isl_sources
     oqpsk_coherrent_demod_impl.cc
     qpsk_decimator_cc_impl.cc
     c1_sys_impl.cc
+    pn_decimator_FI_impl.cc
+    PN_correlation_impl.cc
+    PN_Location_impl.cc
+    PN_Acquisition_impl.cc
 )
 
 set(isl_sources "${isl_sources}" PARENT_SCOPE)

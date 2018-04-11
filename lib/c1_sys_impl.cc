@@ -54,7 +54,7 @@ namespace gr {
 		}
 	}
 	
-
+	sample_in_symbol = 0;
      }
 
     /*
@@ -79,11 +79,9 @@ namespace gr {
       const float *in = (const float *) input_items[0];
       float *out = (float *) output_items[0];
       float *out1 = (float *) output_items[1];
+      //float *out2 = (float *) output_items[2];
       float i_output[3] = {0,0,0};
       float buf_output;
-      int k1;
-      float k2 = 0;
-      float dd = 0.01;
 
       for(int i=0; i<ninput_items[0]; i++)
       {
@@ -103,12 +101,13 @@ namespace gr {
 		i_output[0] = i_output[1];
 		i_output[1] = i_output[2];
 		i_output[2] = out[i];
-		
+
 		if (i_output[1] > 200)
 		{
 			if (i_output[1]>i_output[0] && i_output[1] > i_output[2])
 			{
-				if(sample_in_symbol>=2.5f) sample_in_symbol = sample_in_symbol + 0.1f;
+				if(sample_in_symbol==0.0f);
+				else if(sample_in_symbol>=2.5f) sample_in_symbol = sample_in_symbol + 0.1f;
 				else sample_in_symbol = sample_in_symbol - 0.1f;
  			}
      		}
@@ -118,13 +117,14 @@ namespace gr {
 		
 		if (( ( (int)(sample_in_symbol+0.5f) ) %5 ) == 0)
 		{
-			add_item_tag(1, nitems_written(1)+i, pmt::mp("pn"), pmt::from_double(0.0) );
+			add_item_tag(1, nitems_written(1)+i+2, pmt::mp("pn"), pmt::from_double(0.0) );
 			add_item_tag(0, nitems_written(0)+i-1, pmt::mp("cor"), pmt::from_double(0.0) );	
 		}
 
 		sample_in_symbol = sample_in_symbol + 1.0f;
 
 		if(sample_in_symbol >= 5.0f) sample_in_symbol = sample_in_symbol - 5.0f;
+
       }
       // Do <+signal processing+>
       // Tell runtime system how many input items we consumed on

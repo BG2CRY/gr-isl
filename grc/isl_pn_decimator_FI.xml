@@ -1,0 +1,15 @@
+<block>
+  <name>PN Decimator FI</name>
+  <key>isl_pn_decimator_FI</key>
+  <category>[ISL]</category>
+  <import>import isl</import>
+  <make>isl.pn_decimator_FI()</make>
+  <sink>
+    <name>in</name>
+    <type>float</type>
+  </sink>
+  <source>
+    <name>out</name>
+    <type>int</type>
+  </source>
+</block>

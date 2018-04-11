@@ -1,0 +1,16 @@
+<block>
+  <name>Pn location</name>
+  <key>isl_PN_Location</key>
+  <category>[ISL]</category>
+  <import>import isl</import>
+  <make>isl.PN_Location()</make>
+  <sink>
+    <name>in</name>
+    <type>int</type>
+    <nports>6</nports>
+  </sink>
+  <source>
+    <name>out</name>
+    <type>int</type>
+  </source>
+</block>

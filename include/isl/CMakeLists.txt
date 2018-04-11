@@ -26,5 +26,9 @@ install(FILES
     pmod.h
     oqpsk_coherrent_demod.h
     qpsk_decimator_cc.h
-    c1_sys.h DESTINATION include/isl
+    c1_sys.h
+    pn_decimator_FI.h
+    PN_correlation.h
+    PN_Location.h
+    PN_Acquisition.h DESTINATION include/isl
 )

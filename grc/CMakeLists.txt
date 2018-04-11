@@ -21,5 +21,9 @@ install(FILES
     isl_pmod.xml
     isl_oqpsk_coherrent_demod.xml
     isl_qpsk_decimator_cc.xml
-    isl_c1_sys.xml DESTINATION share/gnuradio/grc/blocks
+    isl_c1_sys.xml
+    isl_pn_decimator_FI.xml
+    isl_PN_correlation.xml
+    isl_PN_Location.xml
+    isl_PN_Acquisition.xml DESTINATION share/gnuradio/grc/blocks
 )
