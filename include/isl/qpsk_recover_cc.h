@@ -18,38 +18,39 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_ISL_C1_SYS_IMPL_H
-#define INCLUDED_ISL_C1_SYS_IMPL_H
 
-#include <isl/c1_sys.h>
+#ifndef INCLUDED_ISL_QPSK_RECOVER_CC_H
+#define INCLUDED_ISL_QPSK_RECOVER_CC_H
+
+#include <isl/api.h>
+#include <gnuradio/sync_block.h>
 
 namespace gr {
   namespace isl {
 
-    class c1_sys_impl : public c1_sys
+    /*!
+     * \brief <+description of block+>
+     * \ingroup isl
+     *
+     */
+    class ISL_API qpsk_recover_cc : virtual public gr::sync_block
     {
-     private:
-      float buf[1070];// 1070 = 214*5//Nothing to declare in this block.
-      float filter_coeff[1070];
-      float sample_in_symbol;
-			int lock;
-      float i_output[3];
-
      public:
-      c1_sys_impl();
-      ~c1_sys_impl();
+      typedef boost::shared_ptr<qpsk_recover_cc> sptr;
 
-      // Where all the action really happens
-      void forecast (int noutput_items, gr_vector_int &ninput_items_required);
-
-      int general_work(int noutput_items,
-           gr_vector_int &ninput_items,
-           gr_vector_const_void_star &input_items,
-           gr_vector_void_star &output_items);
+      /*!
+       * \brief Return a shared_ptr to a new instance of isl::qpsk_recover_cc.
+       *
+       * To avoid accidental use of raw pointers, isl::qpsk_recover_cc's
+       * constructor is in a private implementation
+       * class. isl::qpsk_recover_cc::make is the public interface for
+       * creating new instances.
+       */
+      static sptr make();
     };
 
   } // namespace isl
 } // namespace gr
 
-#endif /* INCLUDED_ISL_C1_SYS_IMPL_H */
+#endif /* INCLUDED_ISL_QPSK_RECOVER_CC_H */
 

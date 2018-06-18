@@ -1,15 +1,15 @@
 <block>
-  <name>C1 sys</name>
-  <key>isl_c1_sys</key>
+  <name>QPSK Recover CC</name>
+  <key>isl_qpsk_recover_cc</key>
   <category>[ISL]</category>
   <import>import isl</import>
-  <make>isl.c1_sys()</make>
+  <make>isl.qpsk_recover_cc()</make>
   <sink>
     <name>in</name>
-    <type>float</type>
+    <type>complex</type>
   </sink>
   <source>
     <name>out</name>
-    <type>int</type>
+    <type>complex</type>
   </source>
 </block>

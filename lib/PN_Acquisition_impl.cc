@@ -168,8 +168,8 @@ namespace gr {
 	    buf_rx[L[5]-1] = in[i];
 	    if (buf_rx[0] != 0 ) buf_mark = 1;
       		
-	    if (lock == 0 && buf_mark ==1)     
-            {
+	    //if (lock == 0 && buf_mark ==1)     
+            //{
 
 	//corralate with C1	
 		mark=0;	
@@ -280,12 +280,12 @@ namespace gr {
 		{
 		    if (out1[i_output-2] == out1[i_output-1] &&out1[i_output-1] == out1[i_output] ) lock = 1;
 		} 
-	    }
+	    //}
 ///////tracking
-	    if (lock == 1)     
+	/*    if (lock == 1)     
             {
 		
-	    }
+	    }*/
 
 	}
 

@@ -17,6 +17,9 @@
 #include "isl/PN_correlation.h"
 #include "isl/PN_Location.h"
 #include "isl/PN_Acquisition.h"
+#include "isl/pn_correlator.h"
+#include "isl/gmsk_demod.h"
+#include "isl/qpsk_recover_cc.h"
 %}
 
 
@@ -38,3 +41,10 @@ GR_SWIG_BLOCK_MAGIC2(isl, PN_correlation);
 GR_SWIG_BLOCK_MAGIC2(isl, PN_Location);
 %include "isl/PN_Acquisition.h"
 GR_SWIG_BLOCK_MAGIC2(isl, PN_Acquisition);
+
+%include "isl/pn_correlator.h"
+GR_SWIG_BLOCK_MAGIC2(isl, pn_correlator);
+%include "isl/gmsk_demod.h"
+GR_SWIG_BLOCK_MAGIC2(isl, gmsk_demod);
+%include "isl/qpsk_recover_cc.h"
+GR_SWIG_BLOCK_MAGIC2(isl, qpsk_recover_cc);

@@ -30,5 +30,8 @@ install(FILES
     pn_decimator_FI.h
     PN_correlation.h
     PN_Location.h
-    PN_Acquisition.h DESTINATION include/isl
+    PN_Acquisition.h
+    pn_correlator.h
+    gmsk_demod.h
+    qpsk_recover_cc.h DESTINATION include/isl
 )

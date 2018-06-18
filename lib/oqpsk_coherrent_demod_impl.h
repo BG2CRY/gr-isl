@@ -46,9 +46,11 @@ namespace gr {
 		gr_complex *d_mf_out;
 		float d_alpha;
 		float d_beta;
-		int d_sample_in_symbol;
+		float d_sample_in_symbol;
 		float d_freq;
 		float d_phase;
+
+		uint8_t d_init;
 
      public:
       oqpsk_coherrent_demod_impl(int samples_per_symbol, const std::vector<gr_complex> &taps, int opt_point, int pll, float pll_loop_bw, float pll_damping, float freq_max, float freq_min, int dttl, float dttl_loop_bw, float dttl_damping, float max_rate_deviation);

@@ -54,7 +54,7 @@ namespace gr {
     void
     pn_decimator_FI_impl::forecast (int noutput_items, gr_vector_int &ninput_items_required)
     {
-      /* <+forecast+> e.g. ninput_items_required[0] = noutput_items */
+      ninput_items_required[0] = noutput_items*5;
     }
 
     int
@@ -74,7 +74,6 @@ namespace gr {
 
 		for(int j=0; j<tags.size(); j++)
 		{
-			out[i_output] = in[i];
 			if(tags[j].key == pmt::mp("pn"))
 			{
 				if (in[i] < 0)

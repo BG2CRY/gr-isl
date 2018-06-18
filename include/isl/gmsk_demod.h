@@ -18,38 +18,39 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_ISL_C1_SYS_IMPL_H
-#define INCLUDED_ISL_C1_SYS_IMPL_H
 
-#include <isl/c1_sys.h>
+#ifndef INCLUDED_ISL_GMSK_DEMOD_H
+#define INCLUDED_ISL_GMSK_DEMOD_H
+
+#include <isl/api.h>
+#include <gnuradio/block.h>
 
 namespace gr {
   namespace isl {
 
-    class c1_sys_impl : public c1_sys
+    /*!
+     * \brief <+description of block+>
+     * \ingroup isl
+     *
+     */
+    class ISL_API gmsk_demod : virtual public gr::block
     {
-     private:
-      float buf[1070];// 1070 = 214*5//Nothing to declare in this block.
-      float filter_coeff[1070];
-      float sample_in_symbol;
-			int lock;
-      float i_output[3];
-
      public:
-      c1_sys_impl();
-      ~c1_sys_impl();
+      typedef boost::shared_ptr<gmsk_demod> sptr;
 
-      // Where all the action really happens
-      void forecast (int noutput_items, gr_vector_int &ninput_items_required);
-
-      int general_work(int noutput_items,
-           gr_vector_int &ninput_items,
-           gr_vector_const_void_star &input_items,
-           gr_vector_void_star &output_items);
+      /*!
+       * \brief Return a shared_ptr to a new instance of isl::gmsk_demod.
+       *
+       * To avoid accidental use of raw pointers, isl::gmsk_demod's
+       * constructor is in a private implementation
+       * class. isl::gmsk_demod::make is the public interface for
+       * creating new instances.
+       */
+      static sptr make(float dtll_gain, int pd_N_avg, float pd_k1, float pd_k2, float vco_gain);
     };
 
   } // namespace isl
 } // namespace gr
 
-#endif /* INCLUDED_ISL_C1_SYS_IMPL_H */
+#endif /* INCLUDED_ISL_GMSK_DEMOD_H */
 

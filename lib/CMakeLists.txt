@@ -24,7 +24,6 @@ include(GrPlatform) #define LIB_SUFFIX
 
 include_directories(${Boost_INCLUDE_DIR})
 link_directories(${Boost_LIBRARY_DIRS})
-
 list(APPEND isl_sources
     pn_generate_i_impl.cc
     pmod_impl.cc
@@ -35,7 +34,9 @@ list(APPEND isl_sources
     PN_correlation_impl.cc
     PN_Location_impl.cc
     PN_Acquisition_impl.cc
-)
+    pn_correlator_impl.cc
+    gmsk_demod_impl.cc
+    qpsk_recover_cc_impl.cc )
 
 set(isl_sources "${isl_sources}" PARENT_SCOPE)
 if(NOT isl_sources)

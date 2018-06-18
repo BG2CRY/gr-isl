@@ -18,38 +18,31 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_ISL_C1_SYS_IMPL_H
-#define INCLUDED_ISL_C1_SYS_IMPL_H
+#ifndef INCLUDED_ISL_QPSK_RECOVER_CC_IMPL_H
+#define INCLUDED_ISL_QPSK_RECOVER_CC_IMPL_H
 
-#include <isl/c1_sys.h>
+#include <isl/qpsk_recover_cc.h>
 
 namespace gr {
   namespace isl {
 
-    class c1_sys_impl : public c1_sys
+    class qpsk_recover_cc_impl : public qpsk_recover_cc
     {
      private:
-      float buf[1070];// 1070 = 214*5//Nothing to declare in this block.
-      float filter_coeff[1070];
-      float sample_in_symbol;
-			int lock;
-      float i_output[3];
+      // Nothing to declare in this block.
 
      public:
-      c1_sys_impl();
-      ~c1_sys_impl();
+      qpsk_recover_cc_impl();
+      ~qpsk_recover_cc_impl();
 
       // Where all the action really happens
-      void forecast (int noutput_items, gr_vector_int &ninput_items_required);
-
-      int general_work(int noutput_items,
-           gr_vector_int &ninput_items,
-           gr_vector_const_void_star &input_items,
-           gr_vector_void_star &output_items);
+      int work(int noutput_items,
+         gr_vector_const_void_star &input_items,
+         gr_vector_void_star &output_items);
     };
 
   } // namespace isl
 } // namespace gr
 
-#endif /* INCLUDED_ISL_C1_SYS_IMPL_H */
+#endif /* INCLUDED_ISL_QPSK_RECOVER_CC_IMPL_H */
 

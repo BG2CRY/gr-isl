@@ -25,6 +25,8 @@
 #include <gnuradio/io_signature.h>
 #include "PN_correlation_impl.h"
 
+#include <stdio.h>
+
 namespace gr {
   namespace isl {
 
@@ -43,6 +45,8 @@ namespace gr {
               gr::io_signature::make(1, 1, sizeof(int)),
               gr::io_signature::make(6, 6, sizeof(int)))
     {
+fprintf(stdout, "Hello I am BG2CRY\n");
+
 	int c1[2] = {1,-1};
 	int c2[7] = {1,1,1,-1,-1,1,-1};
 	int c3[11] = {1,1,1,-1,-1,-1,1,-1,1,1,-1};
@@ -83,7 +87,7 @@ namespace gr {
 	{
 		buf_rx[i] = 0;
 	}
-/*
+
 	for (int i=0;i<t[0];i++)	
 	{
 		buf_cor0[i] = 0;
@@ -100,14 +104,14 @@ namespace gr {
 	{
 		buf_cor3[i] = 0;
 	}
-	for (int i=0;i<t[4];i++)	
+	for (int i=0;i<t[4];i++)
 	{
 		buf_cor4[i] = 0;
 	}
 	for (int i=0;i<t[5];i++)	
 	{
 		buf_cor5[i] = 0;
-	}*/
+	}
      }
 
     /*
@@ -201,7 +205,8 @@ namespace gr {
 		//PN_correlation_impl::Correlator(L0,L[0], t[0], buf_rx, buf_cor0);
 		
 		PN_correlation_impl::max(buf_cor0,t[0], &max_value, &max_index);
-		out0[i] = max_index;
+		//out0[i] = max_index;
+		out0[i] = buf_cor0[0];
 
 /////////C2
 		mark = 0;
@@ -217,7 +222,8 @@ namespace gr {
 		
 		//PN_correlation_impl::Correlator(L1,L[1], t[1], buf_rx, buf_cor1);
 		PN_correlation_impl::max(buf_cor1,t[1], &max_value, &max_index);
-		out1[i] = max_index;
+		//out1[i] = max_index;
+		out1[i] = buf_cor1[0];
 
 /////////
 		mark = 0;
@@ -232,7 +238,8 @@ namespace gr {
 		buf_cor2[0] = mark;
 		//PN_correlation_impl::Correlator(L2,L[2], t[2], buf_rx, buf_cor2);
 		PN_correlation_impl::max(buf_cor2,t[2], &max_value, &max_index);
-		out2[i] = max_index;
+		//out2[i] = max_index;
+		out2[i] = buf_cor2[0];
 
 /////////
 		mark = 0;
@@ -247,7 +254,9 @@ namespace gr {
 		buf_cor3[0] = mark;
 		//PN_correlation_impl::Correlator(L3,L[3], t[3], buf_rx, buf_cor3);
 		PN_correlation_impl::max(buf_cor3,t[3], &max_value, &max_index);
-		out3[i] = max_index;
+	//	out3[i] = max_index;
+		out3[i] = buf_cor3[0];
+
 /////////
 		mark = 0;
 		for (int j = 0; j<L[4];j++)
@@ -260,11 +269,10 @@ namespace gr {
 		}
 		buf_cor4[0] = mark;
 
-
-
 		//PN_correlation_impl::Correlator(L4,L[4], t[4], buf_rx, buf_cor4);
 		PN_correlation_impl::max(buf_cor4,t[4], &max_value, &max_index);
-		out4[i] = max_index;
+		//out4[i] = max_index;
+		out4[i] = buf_cor4[0];
 
 /////////
 		mark = 0;
@@ -280,7 +288,8 @@ namespace gr {
 
 		//PN_correlation_impl::Correlator(L5,L[5], t[5], buf_rx, buf_cor5);
 		PN_correlation_impl::max(buf_cor5,t[5], &max_value, &max_index);
-		out5[i] = max_index;
+		//out5[i] = max_index;
+		out5[i] = buf_cor5[0];
 
 	    
 /////////

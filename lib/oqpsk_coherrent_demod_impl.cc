@@ -46,29 +46,31 @@ namespace gr {
               gr::io_signature::make(1, 1, sizeof(gr_complex)),
               gr::io_signature::make(2, 2, sizeof(gr_complex))),
 	      d_samples_per_symbol(samples_per_symbol), d_taps(taps), d_opt_point(opt_point), d_pll(pll), d_pll_loop_bw(pll_loop_bw), d_pll_damping(pll_damping), d_freq_max(freq_max), d_freq_min(freq_min), d_dttl(dttl), d_dttl_loop_bw(dttl_loop_bw), d_dttl_damping(dttl_damping), d_max_rate_deviation(max_rate_deviation)
-    	{
-		d_mix_out = (gr_complex *)malloc(sizeof(gr_complex)*taps.size());		
-		for(int i=0; i<taps.size(); i++)
-		{
-			d_mix_out[i] = 1.0f;
+    {
+			d_mix_out = (gr_complex *)malloc(sizeof(gr_complex)*taps.size());		
+			for(int i=0; i<taps.size(); i++)
+			{
+				d_mix_out[i] = 1.0f;
+			}
+
+			d_mf_out = (gr_complex *)malloc(sizeof(gr_complex)*(samples_per_symbol/2+2));
+			for(int i=0; i<samples_per_symbol/2+2; i++)
+			{
+				d_mf_out[i] = 1.0f;
+			}
+
+			float denom = 1.0f + 2.0f*pll_damping*pll_loop_bw + pll_loop_bw*pll_loop_bw;
+			d_alpha = (4*pll_damping*pll_loop_bw)/denom;
+			d_beta = (4*pll_loop_bw*pll_loop_bw)/denom;
+
+			set_tag_propagation_policy(TPP_DONT);
+
+			d_sample_in_symbol = 0;
+			d_freq = 0;
+			d_phase = 0;
+
+			d_init = 0;
 		}
-
-		d_mf_out = (gr_complex *)malloc(sizeof(gr_complex)*(samples_per_symbol/2+1));
-		for(int i=0; i<samples_per_symbol/2+1; i++)
-		{
-			d_mf_out[i] = 1.0f;
-		}
-
-		float denom = 1.0f + 2.0f*pll_damping*pll_loop_bw + pll_loop_bw*pll_loop_bw;
-		d_alpha = (4*pll_damping*pll_loop_bw)/denom;
-		d_beta = (4*pll_loop_bw*pll_loop_bw)/denom;
-
-		set_tag_propagation_policy(TPP_DONT);
-
-		d_sample_in_symbol = 0;
-		d_freq = 0;
-		d_phase = 0;
-	}
 
     /*
      * Our virtual destructor.
@@ -91,163 +93,211 @@ namespace gr {
                        gr_vector_void_star &output_items)
     {
       const gr_complex *in = (const gr_complex *) input_items[0];
-      gr_complex *out = (gr_complex *) output_items[0];
+      gr_complex *out0 = (gr_complex *) output_items[0];
       gr_complex *out1 = (gr_complex *) output_items[1];
       int i_output = 0;
 
       for(int i=0; i<ninput_items[0]; i++)
       {
-		std::vector<tag_t> tags;
-		get_tags_in_window(tags, 0, i, i+1);
+				std::vector<tag_t> tags;
+				get_tags_in_window(tags, 0, i, i+1);
 
-		for(int j=0; j<tags.size(); j++)
-		{
-			if(tags[j].key == pmt::mp("corr_start"))
-			{
-				int sample_in_symbol_old = d_sample_in_symbol;
-				d_sample_in_symbol = 0;
-
-				/* For opt_point=12, [B-1, B0], [B1, B2]... */
-				//add_item_tag(0, nitems_written(0)+i_output+1, tags[j].key, tags[j].value );
-
-				/* For opt_point=4, [B0, B1], [B2, B3]... */
-				add_item_tag(0, nitems_written(0)+i_output+2, tags[j].key, tags[j].value );
-
-				static time_t time_curr;
-				static struct tm *tblock_curr;
-
-				time_curr = time(NULL);
-				tblock_curr = gmtime(&time_curr);
-
-				fprintf(stdout, "\n**** ASM found at: %02d:%02d:%02d\nSet sample_in_symbol: %d -> 0\n", tblock_curr->tm_hour, tblock_curr->tm_min, tblock_curr->tm_sec, sample_in_symbol_old);
-			}
-			if(tags[j].key == pmt::mp("payload_start"))
-			{
-				/* For opt_point=12, [B-1, B0], [B1, B2]... */
-				//add_item_tag(0, nitems_written(0)+i_output+1, tags[j].key, tags[j].value );
-
-				/* For opt_point=4, [B0, B1], [B2, B3]... */
-				add_item_tag(0, nitems_written(0)+i_output+2, tags[j].key, tags[j].value );
-			}
-			else if(tags[j].key == pmt::mp("freq_est"))
-			{
-				if(pmt::is_real(tags[j].value))
+				if(!d_init)
 				{
-					float value = pmt::to_double(tags[j].value);
-					float freq_old = d_freq;
-					d_freq = value;
-					fprintf(stdout, "Set freq: %f -> %f\n", freq_old, d_freq);
+					for(int j=0; j<tags.size(); j++)
+					{
+						if(tags[j].key == pmt::mp("corr_start"))
+						{
+							int sample_in_symbol_old = d_sample_in_symbol;
+							d_sample_in_symbol = 0;
+
+							/* For opt_point=12, [B-1, B0], [B1, B2]... */
+							//add_item_tag(0, nitems_written(0)+i_output+1, tags[j].key, tags[j].value );
+
+							/* For opt_point=4, [B0, B1], [B2, B3]... */
+							add_item_tag(0, nitems_written(0)+i_output+2, tags[j].key, tags[j].value );
+
+							static time_t time_curr;
+							static struct tm *tblock_curr;
+
+							time_curr = time(NULL);
+							tblock_curr = gmtime(&time_curr);
+
+							fprintf(stdout, "\n**** ASM found at: %02d:%02d:%02d\nSet sample_in_symbol: %d -> 0\n", tblock_curr->tm_hour, tblock_curr->tm_min, tblock_curr->tm_sec, sample_in_symbol_old);
+
+							//d_init = 1;
+						}
+						if(tags[j].key == pmt::mp("payload_start"))
+						{
+							/* For opt_point=12, [B-1, B0], [B1, B2]... */
+							//add_item_tag(0, nitems_written(0)+i_output+1, tags[j].key, tags[j].value );
+
+							/* For opt_point=4, [B0, B1], [B2, B3]... */
+							add_item_tag(0, nitems_written(0)+i_output+2, tags[j].key, tags[j].value );
+						}
+						else if(tags[j].key == pmt::mp("freq_est"))
+						{
+							if(pmt::is_real(tags[j].value))
+							{
+								float value = pmt::to_double(tags[j].value);
+								float freq_old = d_freq;
+								d_freq = value;
+								fprintf(stdout, "Set freq: %f -> %f\n", freq_old, d_freq);
+							}
+						}
+						else if(tags[j].key == pmt::mp("phase_est"))
+						{
+							if(pmt::is_real(tags[j].value))
+							{
+								float value = pmt::to_double(tags[j].value);
+								float phase_old = d_phase;
+								d_phase = value;
+								fprintf(stdout, "Set phase: %f -> %f\n", phase_old, d_phase);
+							}
+						}
+						else if(tags[j].key == pmt::mp("snr_est"))
+						{
+							if(pmt::is_real(tags[j].value))
+							{
+								float value = pmt::to_double(tags[j].value);
+								float eb_n0_est = value*d_samples_per_symbol/2.0f;
+
+								/* For opt_point=12, [B-1, B0], [B1, B2]... */
+								//add_item_tag(0, nitems_written(0)+i_output+1, pmt::mp("eb_n0"), pmt::from_double(value*d_samples_per_symbol/2.0f) );
+
+								/* For opt_point=4, [B0, B1], [B2, B3]... */
+								add_item_tag(0, nitems_written(0)+i_output+2, pmt::mp("eb_n0_est"), pmt::from_double(eb_n0_est) );
+								fprintf(stdout, "Estimated Eb/N0 = %f\n", eb_n0_est);
+
+							}
+
+						}
+					}
 				}
-			}
-			else if(tags[j].key == pmt::mp("phase_est"))
-			{
-				if(pmt::is_real(tags[j].value))
-				{
-					float value = pmt::to_double(tags[j].value);
-					float phase_old = d_phase;
-					d_phase = value;
-					fprintf(stdout, "Set phase: %f -> %f\n", phase_old, d_phase);
-				}
-			}
-			else if(tags[j].key == pmt::mp("snr_est"))
-			{
-				if(pmt::is_real(tags[j].value))
-				{
-					float value = pmt::to_double(tags[j].value);
-					float eb_n0_est = value*d_samples_per_symbol/2.0f;
-
-				/* For opt_point=12, [B-1, B0], [B1, B2]... */
-				//add_item_tag(0, nitems_written(0)+i_output+1, pmt::mp("eb_n0"), pmt::from_double(value*d_samples_per_symbol/2.0f) );
-
-				/* For opt_point=4, [B0, B1], [B2, B3]... */
-				add_item_tag(0, nitems_written(0)+i_output+2, pmt::mp("eb_n0_est"), pmt::from_double(eb_n0_est) );
-				fprintf(stdout, "Estimated Eb/N0 = %f\n", eb_n0_est);
-
-				}
-
-			}
-		}
 		
-		gr_complex nco;
-		nco.real() = cos(-d_phase);
-		nco.imag() = sin(-d_phase);
+				gr_complex nco;
+				nco.real() = cos(-d_phase);
+				nco.imag() = sin(-d_phase);
 
-		for(int j=0; j<(d_taps.size()-1); j++)
-		{
-			d_mix_out[j] = d_mix_out[j+1];
-		}
-		d_mix_out[d_taps.size()-1] = nco*in[i];
-/////////////////////////////////////////////////////////////////////////////
-		out1[i] = d_mix_out[d_taps.size()-1] ;		
+				for(int j=0; j<(d_taps.size()-1); j++)
+				{
+					d_mix_out[j] = d_mix_out[j+1];
+				}
+				d_mix_out[d_taps.size()-1] = nco*in[i];
+		/////////////////////////////////////////////////////////////////////////////
+				out1[i] = d_mix_out[d_taps.size()-1] ;		
+				//out1[i] = d_phase;		
 
-		for(int j=0; j<d_samples_per_symbol/2; j++)
-		{
-			d_mf_out[j] = d_mf_out[j+1];
-		}		
+				for(int j=0; j<d_samples_per_symbol/2+1; j++)
+				{
+					d_mf_out[j] = d_mf_out[j+1];
+				}		
 
-		d_mf_out[d_samples_per_symbol/2].real() = 0.0f;
-		d_mf_out[d_samples_per_symbol/2].imag() = 0.0f;
-		for(int j=0; j<d_taps.size(); j++)
-		{
-			d_mf_out[d_samples_per_symbol/2] = d_mf_out[d_samples_per_symbol/2] + d_mix_out[j] * d_taps[j];
-		}
+				d_mf_out[d_samples_per_symbol/2+1].real() = 0.0f;
+				d_mf_out[d_samples_per_symbol/2+1].imag() = 0.0f;
+				for(int j=0; j<d_taps.size(); j++)
+				{
+					d_mf_out[d_samples_per_symbol/2+1] = d_mf_out[d_samples_per_symbol/2+1] + d_mix_out[j] * d_taps[j];
+				}
 
-		out[i].real() = d_mf_out[0].imag();
-		out[i].imag() = d_mf_out[d_samples_per_symbol/2].real();
+				out0[i].real() = d_mf_out[1].imag();
+				out0[i].imag() = d_mf_out[d_samples_per_symbol/2+1].real();
 
-		float pd_out;
+				float pd_out;
 
-		if( d_sample_in_symbol==d_opt_point )
-		{
-			add_item_tag(0, nitems_written(0)+i, pmt::mp("opt_point"), pmt::from_double(0.0) );
-			/* For opt_point=12, [B-1, B0], [B1, B2]... */
-			//out[i_output].real() = d_mf_out[0].real();
-			//out[i_output].imag() = d_mf_out[d_samples_per_symbol/2].imag();
+				if( (((int)(d_sample_in_symbol+0.5))%d_samples_per_symbol) ==d_opt_point )
+				{
+					add_item_tag(0, nitems_written(0)+i, pmt::mp("opt_point"), pmt::from_double(0.0) );
+					/* For opt_point=12, [B-1, B0], [B1, B2]... */
+					//out[i_output].real() = d_mf_out[0].real();
+					//out[i_output].imag() = d_mf_out[d_samples_per_symbol/2].imag();
 
-			/* For opt_point=4, [B0, B1], [B2, B3]... */
+					/* For opt_point=4, [B0, B1], [B2, B3]... */
 
 
-			/* For opt_point=12, [B-1, B0], [B1, B2]... */
-			//pd_out = d_mf_out[0].real()*d_mf_out[0].imag() - d_mf_out[d_samples_per_symbol/2].real()*d_mf_out[d_samples_per_symbol/2].imag();
+					/* For opt_point=12, [B-1, B0], [B1, B2]... */
+					//pd_out = d_mf_out[0].real()*d_mf_out[0].imag() - d_mf_out[d_samples_per_symbol/2].real()*d_mf_out[d_samples_per_symbol/2].imag();
 
-			/* For opt_point=4, [B0, B1], [B2, B3]... */
-			pd_out = d_mf_out[d_samples_per_symbol/2].real()*d_mf_out[d_samples_per_symbol/2].imag() - d_mf_out[0].real()*d_mf_out[0].imag();
-		}
+					/* For opt_point=4, [B0, B1], [B2, B3]... */
+					pd_out = d_mf_out[d_samples_per_symbol/2+1].real()*d_mf_out[d_samples_per_symbol/2+1].imag() - d_mf_out[1].real()*d_mf_out[1].imag();
+				}
 
-		d_sample_in_symbol++;
-		if (d_sample_in_symbol == d_samples_per_symbol)
-		{
-			d_sample_in_symbol = 0;
-		}
+				if(d_dttl)
+				{
+						float dttl_window = d_sample_in_symbol - d_opt_point;
+
+						if( dttl_window <= -d_samples_per_symbol/2 )
+						{
+							dttl_window = dttl_window + d_samples_per_symbol;
+						}
+						else if( dttl_window > d_samples_per_symbol/2 )	
+						{
+							dttl_window = dttl_window - d_samples_per_symbol;
+						}					
+
+						if( ( (d_mf_out[0].imag()<0.0) && (d_mf_out[1].imag()>0.0) ) || ( (d_mf_out[0].imag()>0.0) && (d_mf_out[1].imag()<0.0) ) )
+						{
+							if( dttl_window <= 0 )
+							{
+								d_sample_in_symbol = d_sample_in_symbol - 0.01;
+							}
+							else
+							{
+								d_sample_in_symbol = d_sample_in_symbol + 0.01;
+							}
+						}
+
+						if( ( (d_mf_out[d_samples_per_symbol/2].real()<0.0) && (d_mf_out[d_samples_per_symbol/2+1].real()>0.0) ) || ( (d_mf_out[d_samples_per_symbol/2].real()>0.0) && (d_mf_out[d_samples_per_symbol/2+1].real()<0.0) ) )
+						{
+							if( dttl_window <= 0 )
+							{
+								d_sample_in_symbol = d_sample_in_symbol - 0.01;
+							}
+							else
+							{
+								d_sample_in_symbol = d_sample_in_symbol + 0.01;
+							}
+						}			
+				}
+
+				d_sample_in_symbol = d_sample_in_symbol+1.0;
+				if (d_sample_in_symbol >= d_samples_per_symbol)
+				{
+					d_sample_in_symbol = d_sample_in_symbol - d_samples_per_symbol;
+				}
+				else if (d_sample_in_symbol < 0)
+				{
+					d_sample_in_symbol = d_sample_in_symbol + d_samples_per_symbol;
+				}
 		
-		if(d_pll)
-		{
-			d_freq = d_freq + d_beta * pd_out / d_samples_per_symbol / d_samples_per_symbol;
+				if(d_pll)
+				{
+					d_freq = d_freq + d_beta * pd_out / d_samples_per_symbol / d_samples_per_symbol;
 
-			if(d_freq > d_freq_max)
-			{
-				d_freq = d_freq_max;
-			}
-			else if(d_freq < d_freq_min)
-			{
-				d_freq = d_freq_min;
-			}
+					if(d_freq > d_freq_max)
+					{
+						d_freq = d_freq_max;
+					}
+					else if(d_freq < d_freq_min)
+					{
+						d_freq = d_freq_min;
+					}
 
-			d_phase = d_phase + d_freq + d_alpha * pd_out / d_samples_per_symbol;
-		}
-		else
-		{
-			d_phase = d_phase + d_freq;
-		}
+					d_phase = d_phase + d_freq + d_alpha * pd_out / d_samples_per_symbol;
+				}
+				else
+				{
+					d_phase = d_phase + d_freq;
+				}
 
-		if(d_phase > M_PI)
-		{
-			d_phase -= 2.0f*M_PI;
-		}
-		else if(d_phase < -M_PI)
-		{
-			d_phase += 2.0f*M_PI;
-		}
+				if(d_phase > M_PI)
+				{
+					d_phase -= 2.0f*M_PI;
+				}
+				else if(d_phase < -M_PI)
+				{
+					d_phase += 2.0f*M_PI;
+				}
 
       }
 
