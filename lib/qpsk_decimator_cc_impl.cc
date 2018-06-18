@@ -42,7 +42,9 @@ namespace gr {
       : gr::block("qpsk_decimator_cc",
               gr::io_signature::make(1, 1, sizeof(gr_complex)),
               gr::io_signature::make(2, 2, sizeof(gr_complex)))
-    {}
+    {
+      set_tag_propagation_policy(TPP_DONT);
+    }
 
     /*
      * Our virtual destructor.
