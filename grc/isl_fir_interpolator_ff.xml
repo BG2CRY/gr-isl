@@ -1,0 +1,25 @@
+<block>
+  <name>FIR Interpolator FF</name>
+  <key>isl_fir_interpolator_ff</key>
+  <category>[ISL]</category>
+  <import>import isl</import>
+  <make>isl.fir_interpolator_ff($interpolation, $taps)</make>
+  <param>
+    <name>Interpolation</name>
+    <key>interpolation</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Taps</name>
+    <key>taps</key>
+    <type>real_vector</type>
+  </param>
+  <sink>
+    <name>in</name>
+    <type>float</type>
+  </sink>
+  <source>
+    <name>out</name>
+    <type>float</type>
+  </source>
+</block>

@@ -28,5 +28,6 @@ install(FILES
     isl_PN_Acquisition.xml
     isl_pn_correlator.xml
     isl_gmsk_demod.xml
-    isl_qpsk_recover_cc.xml DESTINATION share/gnuradio/grc/blocks
+    isl_qpsk_recover_cc.xml
+    isl_fir_interpolator_ff.xml DESTINATION share/gnuradio/grc/blocks
 )

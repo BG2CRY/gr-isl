@@ -20,6 +20,7 @@
 ########################################################################
 # Project setup
 ########################################################################
+set(CMAKE_C_FLAGS "-std=gnu11")
 cmake_minimum_required(VERSION 2.6)
 project(gr-isl CXX C)
 enable_testing()

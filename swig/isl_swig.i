@@ -20,6 +20,7 @@
 #include "isl/pn_correlator.h"
 #include "isl/gmsk_demod.h"
 #include "isl/qpsk_recover_cc.h"
+#include "isl/fir_interpolator_ff.h"
 %}
 
 
@@ -48,3 +49,7 @@ GR_SWIG_BLOCK_MAGIC2(isl, pn_correlator);
 GR_SWIG_BLOCK_MAGIC2(isl, gmsk_demod);
 %include "isl/qpsk_recover_cc.h"
 GR_SWIG_BLOCK_MAGIC2(isl, qpsk_recover_cc);
+
+
+%include "isl/fir_interpolator_ff.h"
+GR_SWIG_BLOCK_MAGIC2(isl, fir_interpolator_ff);

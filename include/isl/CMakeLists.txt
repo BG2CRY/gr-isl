@@ -33,5 +33,6 @@ install(FILES
     PN_Acquisition.h
     pn_correlator.h
     gmsk_demod.h
-    qpsk_recover_cc.h DESTINATION include/isl
+    qpsk_recover_cc.h
+    fir_interpolator_ff.h DESTINATION include/isl
 )
