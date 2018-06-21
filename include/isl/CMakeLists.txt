@@ -34,5 +34,6 @@ install(FILES
     pn_correlator.h
     gmsk_demod.h
     qpsk_recover_cc.h
-    fir_interpolator_ff.h DESTINATION include/isl
+    fir_interpolator_ff.h
+    vector_element.h DESTINATION include/isl
 )

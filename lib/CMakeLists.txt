@@ -37,7 +37,8 @@ list(APPEND isl_sources
     pn_correlator_impl.cc
     gmsk_demod_impl.cc
     qpsk_recover_cc_impl.cc
-    fir_interpolator_ff_impl.cc )
+    fir_interpolator_ff_impl.cc
+    vector_element_impl.cc )
 
 set(isl_sources "${isl_sources}" PARENT_SCOPE)
 if(NOT isl_sources)
