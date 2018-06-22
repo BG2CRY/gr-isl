@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: ISL_TRX_A
-# Generated: Fri Jun 22 14:10:49 2018
+# Generated: Fri Jun 22 14:54:20 2018
 ##################################################
 
 if __name__ == '__main__':
@@ -77,10 +77,12 @@ class isl_trx_a(gr.top_block, Qt.QWidget):
         self.ebn0 = ebn0 = 100
         self.ymin = ymin = -4
         self.ymax = ymax = 4
+        self.tx_gain = tx_gain = 40
         self.sps_pn = sps_pn = 5
         self.snr_threshold = snr_threshold = 10.0**(ebn0_threshold/10.0)/sps
         self.snr = snr = 10.0**(ebn0/10.0)/sps
         self.samp_rate = samp_rate = 50000
+        self.rx_gain = rx_gain = 40
         self.pll_loop_bw = pll_loop_bw = 50
         self.mrg = mrg = 0.14*3.14
         self.gain_fft = gain_fft = 0+1j
@@ -95,22 +97,36 @@ class isl_trx_a(gr.top_block, Qt.QWidget):
         self._ymin_line_edit = Qt.QLineEdit(str(self.ymin))
         self._ymin_tool_bar.addWidget(self._ymin_line_edit)
         self._ymin_line_edit.returnPressed.connect(
-        	lambda: self.set_ymin(int(str(self._ymin_line_edit.text().toAscii()))))
-        self.top_layout.addWidget(self._ymin_tool_bar)
+        	lambda: self.set_ymin(eng_notation.str_to_num(str(self._ymin_line_edit.text().toAscii()))))
+        self.top_grid_layout.addWidget(self._ymin_tool_bar, 7,1,1,1)
         self._ymax_tool_bar = Qt.QToolBar(self)
         self._ymax_tool_bar.addWidget(Qt.QLabel("ymax"+": "))
         self._ymax_line_edit = Qt.QLineEdit(str(self.ymax))
         self._ymax_tool_bar.addWidget(self._ymax_line_edit)
         self._ymax_line_edit.returnPressed.connect(
-        	lambda: self.set_ymax(int(str(self._ymax_line_edit.text().toAscii()))))
-        self.top_layout.addWidget(self._ymax_tool_bar)
+        	lambda: self.set_ymax(eng_notation.str_to_num(str(self._ymax_line_edit.text().toAscii()))))
+        self.top_grid_layout.addWidget(self._ymax_tool_bar, 8,1,1,1)
+        self._tx_gain_tool_bar = Qt.QToolBar(self)
+        self._tx_gain_tool_bar.addWidget(Qt.QLabel("tx_gain"+": "))
+        self._tx_gain_line_edit = Qt.QLineEdit(str(self.tx_gain))
+        self._tx_gain_tool_bar.addWidget(self._tx_gain_line_edit)
+        self._tx_gain_line_edit.returnPressed.connect(
+        	lambda: self.set_tx_gain(eng_notation.str_to_num(str(self._tx_gain_line_edit.text().toAscii()))))
+        self.top_grid_layout.addWidget(self._tx_gain_tool_bar, 5,1,1,1)
+        self._rx_gain_tool_bar = Qt.QToolBar(self)
+        self._rx_gain_tool_bar.addWidget(Qt.QLabel("rx_gain"+": "))
+        self._rx_gain_line_edit = Qt.QLineEdit(str(self.rx_gain))
+        self._rx_gain_tool_bar.addWidget(self._rx_gain_line_edit)
+        self._rx_gain_line_edit.returnPressed.connect(
+        	lambda: self.set_rx_gain(eng_notation.str_to_num(str(self._rx_gain_line_edit.text().toAscii()))))
+        self.top_grid_layout.addWidget(self._rx_gain_tool_bar, 4,1,1,1)
         self._gain_fft_tool_bar = Qt.QToolBar(self)
         self._gain_fft_tool_bar.addWidget(Qt.QLabel("gain_fft"+": "))
         self._gain_fft_line_edit = Qt.QLineEdit(str(self.gain_fft))
         self._gain_fft_tool_bar.addWidget(self._gain_fft_line_edit)
         self._gain_fft_line_edit.returnPressed.connect(
         	lambda: self.set_gain_fft(eval(str(self._gain_fft_line_edit.text().toAscii()))))
-        self.top_layout.addWidget(self._gain_fft_tool_bar)
+        self.top_grid_layout.addWidget(self._gain_fft_tool_bar, 6,1,1,1)
         self.uhd_usrp_source_0 = uhd.usrp_source(
         	",".join(("", "")),
         	uhd.stream_args(
@@ -123,7 +139,7 @@ class isl_trx_a(gr.top_block, Qt.QWidget):
         self.uhd_usrp_source_0.set_time_now(uhd.time_spec(time.time()), uhd.ALL_MBOARDS)
         self.uhd_usrp_source_0.set_center_freq(2.25e9+50e3, 0)
         self.uhd_usrp_source_0.set_start_time(uhd.time_spec(stime+5)) # sync
-        self.uhd_usrp_source_0.set_gain(40, 0)
+        self.uhd_usrp_source_0.set_gain(rx_gain, 0)
         self.uhd_usrp_source_0.set_antenna('RX2', 0)
         self.uhd_usrp_sink_0_0 = uhd.usrp_sink(
         	",".join(("", "")),
@@ -137,7 +153,7 @@ class isl_trx_a(gr.top_block, Qt.QWidget):
         self.uhd_usrp_sink_0_0.set_time_now(uhd.time_spec(time.time()), uhd.ALL_MBOARDS)
         self.uhd_usrp_sink_0_0.set_center_freq(2.250e9+50e3, 0)
         self.uhd_usrp_sink_0_0.set_start_time(uhd.time_spec(stime+5)) # sync
-        self.uhd_usrp_sink_0_0.set_gain(40, 0)
+        self.uhd_usrp_sink_0_0.set_gain(tx_gain, 0)
         self.uhd_usrp_sink_0_0.set_antenna('TX/RX', 0)
         self.rational_resampler_xxx_0_0 = filter.rational_resampler_ccc(
                 interpolation=4,
@@ -186,7 +202,7 @@ class isl_trx_a(gr.top_block, Qt.QWidget):
             self.qtgui_vector_sink_f_0_0.set_line_alpha(i, alphas[i])
 
         self._qtgui_vector_sink_f_0_0_win = sip.wrapinstance(self.qtgui_vector_sink_f_0_0.pyqwidget(), Qt.QWidget)
-        self.top_layout.addWidget(self._qtgui_vector_sink_f_0_0_win)
+        self.top_grid_layout.addWidget(self._qtgui_vector_sink_f_0_0_win, 3,0,1,1)
         self.qtgui_vector_sink_f_0 = qtgui.vector_sink_f(
             fft_length,
             0,
@@ -198,7 +214,7 @@ class isl_trx_a(gr.top_block, Qt.QWidget):
         )
         self.qtgui_vector_sink_f_0.set_update_time(0.10)
         self.qtgui_vector_sink_f_0.set_y_axis(0, 20000)
-        self.qtgui_vector_sink_f_0.enable_autoscale(False)
+        self.qtgui_vector_sink_f_0.enable_autoscale(True)
         self.qtgui_vector_sink_f_0.enable_grid(False)
         self.qtgui_vector_sink_f_0.set_x_axis_units("")
         self.qtgui_vector_sink_f_0.set_y_axis_units("")
@@ -222,7 +238,7 @@ class isl_trx_a(gr.top_block, Qt.QWidget):
             self.qtgui_vector_sink_f_0.set_line_alpha(i, alphas[i])
 
         self._qtgui_vector_sink_f_0_win = sip.wrapinstance(self.qtgui_vector_sink_f_0.pyqwidget(), Qt.QWidget)
-        self.top_layout.addWidget(self._qtgui_vector_sink_f_0_win)
+        self.top_grid_layout.addWidget(self._qtgui_vector_sink_f_0_win, 4,0,5,1)
         self.qtgui_time_sink_x_2_0 = qtgui.time_sink_c(
         	800, #size
         	1000, #samp_rate
@@ -319,7 +335,7 @@ class isl_trx_a(gr.top_block, Qt.QWidget):
             self.qtgui_time_sink_x_0.set_line_alpha(i, alphas[i])
 
         self._qtgui_time_sink_x_0_win = sip.wrapinstance(self.qtgui_time_sink_x_0.pyqwidget(), Qt.QWidget)
-        self.top_layout.addWidget(self._qtgui_time_sink_x_0_win)
+        self.top_grid_layout.addWidget(self._qtgui_time_sink_x_0_win, 3,1,1,1)
         self.qtgui_freq_sink_x_0_0 = qtgui.freq_sink_c(
         	1024, #size
         	firdes.WIN_BLACKMAN_hARRIS, #wintype
@@ -559,7 +575,7 @@ class isl_trx_a(gr.top_block, Qt.QWidget):
 
     def set_ymin(self, ymin):
         self.ymin = ymin
-        Qt.QMetaObject.invokeMethod(self._ymin_line_edit, "setText", Qt.Q_ARG("QString", str(self.ymin)))
+        Qt.QMetaObject.invokeMethod(self._ymin_line_edit, "setText", Qt.Q_ARG("QString", eng_notation.num_to_str(self.ymin)))
         self.qtgui_time_sink_x_0.set_y_axis(self.ymin, self.ymax)
 
     def get_ymax(self):
@@ -567,8 +583,17 @@ class isl_trx_a(gr.top_block, Qt.QWidget):
 
     def set_ymax(self, ymax):
         self.ymax = ymax
-        Qt.QMetaObject.invokeMethod(self._ymax_line_edit, "setText", Qt.Q_ARG("QString", str(self.ymax)))
+        Qt.QMetaObject.invokeMethod(self._ymax_line_edit, "setText", Qt.Q_ARG("QString", eng_notation.num_to_str(self.ymax)))
         self.qtgui_time_sink_x_0.set_y_axis(self.ymin, self.ymax)
+
+    def get_tx_gain(self):
+        return self.tx_gain
+
+    def set_tx_gain(self, tx_gain):
+        self.tx_gain = tx_gain
+        Qt.QMetaObject.invokeMethod(self._tx_gain_line_edit, "setText", Qt.Q_ARG("QString", eng_notation.num_to_str(self.tx_gain)))
+        self.uhd_usrp_sink_0_0.set_gain(self.tx_gain, 0)
+
 
     def get_sps_pn(self):
         return self.sps_pn
@@ -599,6 +624,15 @@ class isl_trx_a(gr.top_block, Qt.QWidget):
         self.low_pass_filter_0.set_taps(firdes.low_pass(1, 1.0*self.samp_rate/self.fft_length, 1.0*1024/self.fft_length, 3.0*1024/self.fft_length, firdes.WIN_HAMMING, 6.76))
         self.analog_sig_source_x_1.set_sampling_freq(self.samp_rate)
         self.analog_sig_source_x_1.set_frequency(self.samp_rate/3)
+
+    def get_rx_gain(self):
+        return self.rx_gain
+
+    def set_rx_gain(self, rx_gain):
+        self.rx_gain = rx_gain
+        Qt.QMetaObject.invokeMethod(self._rx_gain_line_edit, "setText", Qt.Q_ARG("QString", eng_notation.num_to_str(self.rx_gain)))
+        self.uhd_usrp_source_0.set_gain(self.rx_gain, 0)
+
 
     def get_pll_loop_bw(self):
         return self.pll_loop_bw

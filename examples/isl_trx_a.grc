@@ -178,11 +178,11 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(496, 908)</value>
+      <value>(944, 1204)</value>
     </param>
     <param>
       <key>gui_hint</key>
-      <value></value>
+      <value>6,1,1,1</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -253,6 +253,45 @@
     <param>
       <key>value</key>
       <value>50</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_qtgui_entry</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>40</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(848, 28)</value>
+    </param>
+    <param>
+      <key>gui_hint</key>
+      <value>4,1,1,1</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>rx_gain</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value></value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>real</value>
     </param>
   </block>
   <block>
@@ -398,6 +437,45 @@
     </param>
     <param>
       <key>value</key>
+      <value>40</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(984, 28)</value>
+    </param>
+    <param>
+      <key>gui_hint</key>
+      <value>5,1,1,1</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>tx_gain</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value></value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>real</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_qtgui_entry</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>value</key>
       <value>4</value>
     </param>
     <param>
@@ -410,7 +488,7 @@
     </param>
     <param>
       <key>gui_hint</key>
-      <value></value>
+      <value>8,1,1,1</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -426,7 +504,7 @@
     </param>
     <param>
       <key>type</key>
-      <value>int</value>
+      <value>real</value>
     </param>
   </block>
   <block>
@@ -449,7 +527,7 @@
     </param>
     <param>
       <key>gui_hint</key>
-      <value></value>
+      <value>7,1,1,1</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -465,7 +543,7 @@
     </param>
     <param>
       <key>type</key>
-      <value>int</value>
+      <value>real</value>
     </param>
   </block>
   <block>
@@ -3575,7 +3653,7 @@
     </param>
     <param>
       <key>gui_hint</key>
-      <value></value>
+      <value>3,1,1,1</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -4265,7 +4343,7 @@
     <key>qtgui_vector_sink_f</key>
     <param>
       <key>autoscale</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>average</key>
@@ -4293,7 +4371,7 @@
     </param>
     <param>
       <key>gui_hint</key>
-      <value></value>
+      <value>4,0,5,1</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -4564,7 +4642,7 @@
     </param>
     <param>
       <key>gui_hint</key>
-      <value></value>
+      <value>3,0,1,1</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -4945,7 +5023,7 @@
     </param>
     <param>
       <key>gain0</key>
-      <value>40</value>
+      <value>tx_gain</value>
     </param>
     <param>
       <key>ant10</key>
@@ -5776,7 +5854,7 @@
     </param>
     <param>
       <key>gain0</key>
-      <value>40</value>
+      <value>rx_gain</value>
     </param>
     <param>
       <key>lo_export0</key>
