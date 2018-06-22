@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="PN__Location__impl_8h" kind="file" language="C++">
+    <compoundname>PN_Location_impl.h</compoundname>
+    <includes refid="PN__Location_8h" local="no">isl/PN_Location.h</includes>
+    <incdepgraph>
+      <node id="164">
+        <label>gnuradio/attributes.h</label>
+      </node>
+      <node id="161">
+        <label>PN_Location_impl.h</label>
+        <link refid="PN_Location_impl.h"/>
+        <childnode refid="162" relation="include">
+        </childnode>
+      </node>
+      <node id="162">
+        <label>isl/PN_Location.h</label>
+        <link refid="PN__Location_8h"/>
+        <childnode refid="163" relation="include">
+        </childnode>
+        <childnode refid="165" relation="include">
+        </childnode>
+      </node>
+      <node id="165">
+        <label>gnuradio/block.h</label>
+      </node>
+      <node id="163">
+        <label>isl/api.h</label>
+        <link refid="api_8h"/>
+        <childnode refid="164" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classgr_1_1isl_1_1PN__Location__impl" prot="public">gr::isl::PN_Location_impl</innerclass>
+    <innernamespace refid="namespacegr">gr</innernamespace>
+    <innernamespace refid="namespacegr_1_1isl">gr::isl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/lilac/gr-isl/lib/PN_Location_impl.h"/>
+  </compounddef>
+</doxygen>

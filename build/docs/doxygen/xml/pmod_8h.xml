@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="pmod_8h" kind="file" language="C++">
+    <compoundname>pmod.h</compoundname>
+    <includes refid="api_8h" local="no">isl/api.h</includes>
+    <includes local="no">gnuradio/block.h</includes>
+    <includedby refid="pmod__impl_8h" local="no">pmod_impl.h</includedby>
+    <incdepgraph>
+      <node id="85">
+        <label>gnuradio/attributes.h</label>
+      </node>
+      <node id="83">
+        <label>pmod.h</label>
+        <link refid="pmod.h"/>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="86" relation="include">
+        </childnode>
+      </node>
+      <node id="86">
+        <label>gnuradio/block.h</label>
+      </node>
+      <node id="84">
+        <label>isl/api.h</label>
+        <link refid="api_8h"/>
+        <childnode refid="85" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="88">
+        <label>pmod_impl.h</label>
+        <link refid="pmod__impl_8h"/>
+      </node>
+      <node id="87">
+        <label>pmod.h</label>
+        <link refid="pmod.h"/>
+        <childnode refid="88" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classgr_1_1isl_1_1pmod" prot="public">gr::isl::pmod</innerclass>
+    <innernamespace refid="namespacegr">gr</innernamespace>
+    <innernamespace refid="namespacegr_1_1isl">gr::isl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/lilac/gr-isl/include/isl/pmod.h"/>
+  </compounddef>
+</doxygen>

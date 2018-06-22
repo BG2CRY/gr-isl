@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classgr_1_1isl_1_1vector__get__element__ff" kind="class" language="C++" prot="public">
+    <compoundname>gr::isl::vector_get_element_ff</compoundname>
+    <basecompoundref prot="public" virt="virtual">sync_block</basecompoundref>
+    <derivedcompoundref refid="classgr_1_1isl_1_1vector__get__element__ff__impl" prot="public" virt="non-virtual">gr::isl::vector_get_element_ff_impl</derivedcompoundref>
+    <includes refid="vector__get__element__ff_8h" local="no">vector_get_element_ff.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classgr_1_1isl_1_1vector__get__element__ff_1a0296127a6d06efae5ca9f17ac37985b1" prot="public" static="no">
+        <type>boost::shared_ptr&lt; <ref refid="classgr_1_1isl_1_1vector__get__element__ff" kindref="compound">vector_get_element_ff</ref> &gt;</type>
+        <definition>typedef boost::shared_ptr&lt;vector_get_element_ff&gt; gr::isl::vector_get_element_ff::sptr</definition>
+        <argsstring></argsstring>
+        <name>sptr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/lilac/gr-isl/include/isl/vector_get_element_ff.h" line="39" column="1" bodyfile="/home/lilac/gr-isl/include/isl/vector_get_element_ff.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classgr_1_1isl_1_1vector__get__element__ff_1a9279d008542e7f2999c20f371481aa43" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classgr_1_1isl_1_1vector__get__element__ff_1a0296127a6d06efae5ca9f17ac37985b1" kindref="member">sptr</ref></type>
+        <definition>static sptr gr::isl::vector_get_element_ff::make</definition>
+        <argsstring>(int vector_length, int location)</argsstring>
+        <name>make</name>
+        <param>
+          <type>int</type>
+          <declname>vector_length</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>location</declname>
+        </param>
+        <briefdescription>
+<para>Return a shared_ptr to a new instance of <ref refid="classgr_1_1isl_1_1vector__get__element__ff" kindref="compound">isl::vector_get_element_ff</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>To avoid accidental use of raw pointers, <ref refid="classgr_1_1isl_1_1vector__get__element__ff" kindref="compound">isl::vector_get_element_ff</ref>&apos;s constructor is in a private implementation class. <ref refid="classgr_1_1isl_1_1vector__get__element__ff_1a9279d008542e7f2999c20f371481aa43" kindref="member">isl::vector_get_element_ff::make</ref> is the public interface for creating new instances. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/lilac/gr-isl/include/isl/vector_get_element_ff.h" line="49" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>&lt;+description of block+&gt; </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="147">
+        <label>gr::isl::vector_get_element_ff_impl</label>
+        <link refid="classgr_1_1isl_1_1vector__get__element__ff__impl"/>
+        <childnode refid="145" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="146">
+        <label>sync_block</label>
+      </node>
+      <node id="145">
+        <label>gr::isl::vector_get_element_ff</label>
+        <link refid="classgr_1_1isl_1_1vector__get__element__ff"/>
+        <childnode refid="146" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="149">
+        <label>sync_block</label>
+      </node>
+      <node id="148">
+        <label>gr::isl::vector_get_element_ff</label>
+        <link refid="classgr_1_1isl_1_1vector__get__element__ff"/>
+        <childnode refid="149" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/lilac/gr-isl/include/isl/vector_get_element_ff.h" line="37" column="1" bodyfile="/home/lilac/gr-isl/include/isl/vector_get_element_ff.h" bodystart="36" bodyend="50"/>
+    <listofallmembers>
+      <member refid="classgr_1_1isl_1_1vector__get__element__ff_1a9279d008542e7f2999c20f371481aa43" prot="public" virt="non-virtual"><scope>gr::isl::vector_get_element_ff</scope><name>make</name></member>
+      <member refid="classgr_1_1isl_1_1vector__get__element__ff_1a0296127a6d06efae5ca9f17ac37985b1" prot="public" virt="non-virtual"><scope>gr::isl::vector_get_element_ff</scope><name>sptr</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

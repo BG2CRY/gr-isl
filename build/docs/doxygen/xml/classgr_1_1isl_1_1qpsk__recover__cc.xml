@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classgr_1_1isl_1_1qpsk__recover__cc" kind="class" language="C++" prot="public">
+    <compoundname>gr::isl::qpsk_recover_cc</compoundname>
+    <basecompoundref prot="public" virt="virtual">sync_block</basecompoundref>
+    <derivedcompoundref refid="classgr_1_1isl_1_1qpsk__recover__cc__impl" prot="public" virt="non-virtual">gr::isl::qpsk_recover_cc_impl</derivedcompoundref>
+    <includes refid="qpsk__recover__cc_8h" local="no">qpsk_recover_cc.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classgr_1_1isl_1_1qpsk__recover__cc_1a32d91ec5ab3b9ffa5c4880bf232f889c" prot="public" static="no">
+        <type>boost::shared_ptr&lt; <ref refid="classgr_1_1isl_1_1qpsk__recover__cc" kindref="compound">qpsk_recover_cc</ref> &gt;</type>
+        <definition>typedef boost::shared_ptr&lt;qpsk_recover_cc&gt; gr::isl::qpsk_recover_cc::sptr</definition>
+        <argsstring></argsstring>
+        <name>sptr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/lilac/gr-isl/include/isl/qpsk_recover_cc.h" line="39" column="1" bodyfile="/home/lilac/gr-isl/include/isl/qpsk_recover_cc.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classgr_1_1isl_1_1qpsk__recover__cc_1a49e9fd003bd92d7f472a7b9323ab043b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classgr_1_1isl_1_1qpsk__recover__cc_1a32d91ec5ab3b9ffa5c4880bf232f889c" kindref="member">sptr</ref></type>
+        <definition>static sptr gr::isl::qpsk_recover_cc::make</definition>
+        <argsstring>()</argsstring>
+        <name>make</name>
+        <briefdescription>
+<para>Return a shared_ptr to a new instance of <ref refid="classgr_1_1isl_1_1qpsk__recover__cc" kindref="compound">isl::qpsk_recover_cc</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>To avoid accidental use of raw pointers, <ref refid="classgr_1_1isl_1_1qpsk__recover__cc" kindref="compound">isl::qpsk_recover_cc</ref>&apos;s constructor is in a private implementation class. <ref refid="classgr_1_1isl_1_1qpsk__recover__cc_1a49e9fd003bd92d7f472a7b9323ab043b" kindref="member">isl::qpsk_recover_cc::make</ref> is the public interface for creating new instances. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/lilac/gr-isl/include/isl/qpsk_recover_cc.h" line="49" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>&lt;+description of block+&gt; </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="136">
+        <label>gr::isl::qpsk_recover_cc_impl</label>
+        <link refid="classgr_1_1isl_1_1qpsk__recover__cc__impl"/>
+        <childnode refid="134" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="135">
+        <label>gr::sync_block</label>
+      </node>
+      <node id="134">
+        <label>gr::isl::qpsk_recover_cc</label>
+        <link refid="classgr_1_1isl_1_1qpsk__recover__cc"/>
+        <childnode refid="135" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="138">
+        <label>gr::sync_block</label>
+      </node>
+      <node id="137">
+        <label>gr::isl::qpsk_recover_cc</label>
+        <link refid="classgr_1_1isl_1_1qpsk__recover__cc"/>
+        <childnode refid="138" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/lilac/gr-isl/include/isl/qpsk_recover_cc.h" line="37" column="1" bodyfile="/home/lilac/gr-isl/include/isl/qpsk_recover_cc.h" bodystart="36" bodyend="50"/>
+    <listofallmembers>
+      <member refid="classgr_1_1isl_1_1qpsk__recover__cc_1a49e9fd003bd92d7f472a7b9323ab043b" prot="public" virt="non-virtual"><scope>gr::isl::qpsk_recover_cc</scope><name>make</name></member>
+      <member refid="classgr_1_1isl_1_1qpsk__recover__cc_1a32d91ec5ab3b9ffa5c4880bf232f889c" prot="public" virt="non-virtual"><scope>gr::isl::qpsk_recover_cc</scope><name>sptr</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
