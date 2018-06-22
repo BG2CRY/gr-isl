@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: ISL_TRX_A
-# Generated: Fri Jun 22 13:52:02 2018
+# Generated: Fri Jun 22 14:10:49 2018
 ##################################################
 
 if __name__ == '__main__':
@@ -75,6 +75,8 @@ class isl_trx_a(gr.top_block, Qt.QWidget):
         self.sps = sps = 8
         self.ebn0_threshold = ebn0_threshold = 5
         self.ebn0 = ebn0 = 100
+        self.ymin = ymin = -4
+        self.ymax = ymax = 4
         self.sps_pn = sps_pn = 5
         self.snr_threshold = snr_threshold = 10.0**(ebn0_threshold/10.0)/sps
         self.snr = snr = 10.0**(ebn0/10.0)/sps
@@ -88,6 +90,20 @@ class isl_trx_a(gr.top_block, Qt.QWidget):
         ##################################################
         # Blocks
         ##################################################
+        self._ymin_tool_bar = Qt.QToolBar(self)
+        self._ymin_tool_bar.addWidget(Qt.QLabel("ymin"+": "))
+        self._ymin_line_edit = Qt.QLineEdit(str(self.ymin))
+        self._ymin_tool_bar.addWidget(self._ymin_line_edit)
+        self._ymin_line_edit.returnPressed.connect(
+        	lambda: self.set_ymin(int(str(self._ymin_line_edit.text().toAscii()))))
+        self.top_layout.addWidget(self._ymin_tool_bar)
+        self._ymax_tool_bar = Qt.QToolBar(self)
+        self._ymax_tool_bar.addWidget(Qt.QLabel("ymax"+": "))
+        self._ymax_line_edit = Qt.QLineEdit(str(self.ymax))
+        self._ymax_tool_bar.addWidget(self._ymax_line_edit)
+        self._ymax_line_edit.returnPressed.connect(
+        	lambda: self.set_ymax(int(str(self._ymax_line_edit.text().toAscii()))))
+        self.top_layout.addWidget(self._ymax_tool_bar)
         self._gain_fft_tool_bar = Qt.QToolBar(self)
         self._gain_fft_tool_bar.addWidget(Qt.QLabel("gain_fft"+": "))
         self._gain_fft_line_edit = Qt.QLineEdit(str(self.gain_fft))
@@ -264,7 +280,7 @@ class isl_trx_a(gr.top_block, Qt.QWidget):
         	1 #number of inputs
         )
         self.qtgui_time_sink_x_0.set_update_time(0.10)
-        self.qtgui_time_sink_x_0.set_y_axis(-1.59, -1.54)
+        self.qtgui_time_sink_x_0.set_y_axis(ymin, ymax)
 
         self.qtgui_time_sink_x_0.set_y_label('Amplitude', "")
 
@@ -537,6 +553,22 @@ class isl_trx_a(gr.top_block, Qt.QWidget):
     def set_ebn0(self, ebn0):
         self.ebn0 = ebn0
         self.set_snr(10.0**(self.ebn0/10.0)/self.sps)
+
+    def get_ymin(self):
+        return self.ymin
+
+    def set_ymin(self, ymin):
+        self.ymin = ymin
+        Qt.QMetaObject.invokeMethod(self._ymin_line_edit, "setText", Qt.Q_ARG("QString", str(self.ymin)))
+        self.qtgui_time_sink_x_0.set_y_axis(self.ymin, self.ymax)
+
+    def get_ymax(self):
+        return self.ymax
+
+    def set_ymax(self, ymax):
+        self.ymax = ymax
+        Qt.QMetaObject.invokeMethod(self._ymax_line_edit, "setText", Qt.Q_ARG("QString", str(self.ymax)))
+        self.qtgui_time_sink_x_0.set_y_axis(self.ymin, self.ymax)
 
     def get_sps_pn(self):
         return self.sps_pn
