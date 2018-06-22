@@ -96,6 +96,8 @@ namespace gr {
       gr_complex *out0 = (gr_complex *) output_items[0];
       gr_complex *out1 = (gr_complex *) output_items[1];
       int i_output = 0;
+      float dd = 0;
+      float dif;
 
       for(int i=0; i<ninput_items[0]; i++)
       {
@@ -204,10 +206,12 @@ namespace gr {
 				out0[i].imag() = d_mf_out[d_samples_per_symbol/2+1].real();
 
 				float pd_out;
+				
 
 				if( (((int)(d_sample_in_symbol+0.5))%d_samples_per_symbol) ==d_opt_point )
 				{
 					add_item_tag(0, nitems_written(0)+i, pmt::mp("opt_point"), pmt::from_double(0.0) );
+
 					/* For opt_point=12, [B-1, B0], [B1, B2]... */
 					//out[i_output].real() = d_mf_out[0].real();
 					//out[i_output].imag() = d_mf_out[d_samples_per_symbol/2].imag();
@@ -220,9 +224,28 @@ namespace gr {
 
 					/* For opt_point=4, [B0, B1], [B2, B3]... */
 					pd_out = d_mf_out[d_samples_per_symbol/2+1].real()*d_mf_out[d_samples_per_symbol/2+1].imag() - d_mf_out[1].real()*d_mf_out[1].imag();
+
+					if(d_dttl == 2)
+					{
+						dif = abs(d_mf_out[2].imag() - d_mf_out[0].imag());
+						dd = 0.2*dif;
+						if (dd > 0.1) dd = 0.1;
+						if (dd < -0.1) dd = -0.1;
+						d_sample_in_symbol = d_sample_in_symbol + dd;	
+					}
+
+					if(d_dttl == 3)
+					{
+						dif = abs(d_mf_out[2].imag() - d_mf_out[0].imag());
+						dd = dd+0.2*dif;
+						if (dd > 0.1) dd = 0.1;
+						if (dd < -0.1) dd = -0.1;
+						d_sample_in_symbol = d_sample_in_symbol + dd;	
+					}
 				}
 
-				if(d_dttl)
+
+				if(d_dttl == 1)
 				{
 						float dttl_window = d_sample_in_symbol - d_opt_point;
 
@@ -259,6 +282,8 @@ namespace gr {
 							}
 						}			
 				}
+
+
 
 				d_sample_in_symbol = d_sample_in_symbol+1.0;
 				if (d_sample_in_symbol >= d_samples_per_symbol)

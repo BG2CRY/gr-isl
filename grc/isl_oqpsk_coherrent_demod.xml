@@ -63,15 +63,23 @@
     <name>DTTL</name>
     <key>dttl</key>
     <value>0</value>
-	<type>enum</type>
-	<option>
-		<name>ON</name>
-		<key>1</key>
-	</option>
-	<option>
-		<name>OFF</name>
-		<key>0</key>
-	</option>
+		<type>enum</type>
+		<option>
+			<name>OFF</name>
+			<key>0</key>
+		</option>
+		<option>
+			<name>DTTL1</name>
+			<key>1</key>
+		</option>
+		<option>
+			<name>DTTL2</name>
+			<key>2</key>
+		</option>
+		<option>
+			<name>DTTL3</name>
+			<key>3</key>
+		</option>
   </param>
   <param>
     <name>DTLL Loop BW</name>
