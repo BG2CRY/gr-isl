@@ -421,7 +421,7 @@ class isl_trx_b(gr.top_block, Qt.QWidget):
         self._qtgui_const_sink_x_0_win = sip.wrapinstance(self.qtgui_const_sink_x_0.pyqwidget(), Qt.QWidget)
         self.top_grid_layout.addWidget(self._qtgui_const_sink_x_0_win, 1,1,1,1)
         self.low_pass_filter_0 = filter.fir_filter_fff(1, firdes.low_pass(
-        	1, 1.0*samp_rate/fft_length, 1.0*1024/fft_length, 3.0*1024/fft_length, firdes.WIN_HAMMING, 6.76))
+        	1, 1.0*samp_rate/fft_length, 0.5, 0.5, firdes.WIN_HAMMING, 6.76))
         self.isl_vector_get_element_ff_0 = isl.vector_get_element_ff(fft_length, fft_length/3)
         self.isl_qpsk_recover_cc_0 = isl.qpsk_recover_cc()
         self.isl_qpsk_decimator_cc_0 = isl.qpsk_decimator_cc()
