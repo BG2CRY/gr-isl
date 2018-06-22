@@ -137,7 +137,7 @@ class isl_trx_a(gr.top_block, Qt.QWidget):
         self.uhd_usrp_source_0.set_subdev_spec('A:A', 0)
         self.uhd_usrp_source_0.set_samp_rate(200e3)
         self.uhd_usrp_source_0.set_time_now(uhd.time_spec(time.time()), uhd.ALL_MBOARDS)
-        self.uhd_usrp_source_0.set_center_freq(2.25e9+50e3, 0)
+        self.uhd_usrp_source_0.set_center_freq(2.05e9+50e3, 0)
         self.uhd_usrp_source_0.set_start_time(uhd.time_spec(stime+5)) # sync
         self.uhd_usrp_source_0.set_gain(rx_gain, 0)
         self.uhd_usrp_source_0.set_antenna('RX2', 0)
