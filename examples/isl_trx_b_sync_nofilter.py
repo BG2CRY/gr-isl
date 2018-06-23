@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: ISL_TRX_B
-# Generated: Fri Jun 22 18:14:38 2018
+# Generated: Fri Jun 22 16:27:17 2018
 ##################################################
 
 if __name__ == '__main__':
@@ -34,6 +34,7 @@ from gnuradio import uhd
 from gnuradio.eng_option import eng_option
 from gnuradio.fft import window
 from gnuradio.filter import firdes
+from grc_gnuradio import blks2 as grc_blks2
 from optparse import OptionParser
 import dslwp
 import isl
@@ -87,7 +88,7 @@ class isl_trx_b(gr.top_block, Qt.QWidget):
         self.pll_loop_bw = pll_loop_bw = 50
         self.mrg = mrg = 0.14*3.14
         self.gain_fft = gain_fft = 0+1j
-        self.fft_length = fft_length = 8192
+        self.fft_length = fft_length = 32768
         stime = time.time() # sync
 
         ##################################################
@@ -159,7 +160,7 @@ class isl_trx_b(gr.top_block, Qt.QWidget):
         self.uhd_usrp_sink_0_0.set_subdev_spec('A:B', 0)
         self.uhd_usrp_sink_0_0.set_samp_rate(200e3)
         self.uhd_usrp_sink_0_0.set_time_now(uhd.time_spec(time.time()), uhd.ALL_MBOARDS)
-        self.uhd_usrp_sink_0_0.set_center_freq(2.250e9+50e3, 0)
+        self.uhd_usrp_sink_0_0.set_center_freq(2.050e9+50e3, 0)
         self.uhd_usrp_sink_0_0.set_start_time(uhd.time_spec(stime+5)) # sync
         self.uhd_usrp_sink_0_0.set_gain(tx_gain, 0)
         self.uhd_usrp_sink_0_0.set_antenna('TX/RX', 0)
@@ -428,6 +429,8 @@ class isl_trx_b(gr.top_block, Qt.QWidget):
 
         self._qtgui_const_sink_x_0_win = sip.wrapinstance(self.qtgui_const_sink_x_0.pyqwidget(), Qt.QWidget)
         self.top_grid_layout.addWidget(self._qtgui_const_sink_x_0_win, 1,1,1,1)
+        self.low_pass_filter_0 = filter.fir_filter_fff(1, firdes.low_pass(
+        	1, 1.0*samp_rate/fft_length, 1.0, 1.0, firdes.WIN_HAMMING, 6.76))
         self.isl_vector_get_element_ff_0 = isl.vector_get_element_ff(fft_length, fft_length/3)
         self.isl_qpsk_recover_cc_0 = isl.qpsk_recover_cc()
         self.isl_qpsk_decimator_cc_0 = isl.qpsk_decimator_cc()
@@ -435,8 +438,8 @@ class isl_trx_b(gr.top_block, Qt.QWidget):
         self.isl_oqpsk_coherrent_demod_0 = isl.oqpsk_coherrent_demod(16, ([0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000005, 0.000035, 0.000189, 0.000787, 0.002569, 0.006746, 0.014618, 0.026868, 0.043018, 0.061431, 0.079856, 0.096160, 0.108824, 0.117144, 0.121157, 0.121157, 0.117144, 0.108824, 0.096160, 0.079856, 0.061431, 0.043018, 0.026868, 0.014618, 0.006746, 0.002569, 0.000787, 0.000189, 0.000035, 0.000005, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000]), 4, 1, 2.0*math.pi*pll_loop_bw/samp_rate, 0.707, 3.14, -3.14, 3, 0.05, 0.707, 1.5)
         self.interp_fir_filter_xxx_1 = filter.interp_fir_filter_ccc(1, ([0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000005, 0.000035, 0.000189, 0.000787, 0.002569, 0.006746, 0.014618, 0.026868, 0.043018, 0.061431, 0.079856, 0.096160, 0.108824, 0.117144, 0.121157, 0.121157, 0.117144, 0.108824, 0.096160, 0.079856, 0.061431, 0.043018, 0.026868, 0.014618, 0.006746, 0.002569, 0.000787, 0.000189, 0.000035, 0.000005, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000]))
         self.interp_fir_filter_xxx_1.declare_sample_delay(0)
-        self.fft_vxx_0_0 = fft.fft_vfc(fft_length, True, (window.blackmanharris(fft_length)), 1)
-        self.fft_vxx_0 = fft.fft_vfc(fft_length, True, (window.blackmanharris(fft_length)), 1)
+        self.fft_vxx_0_0 = fft.fft_vfc(fft_length, True, (), 1)
+        self.fft_vxx_0 = fft.fft_vfc(fft_length, True, (), 1)
         self.fft_correlator_hier_0 = fft_correlator_hier(
             fft_size=512,
             nthreads=1,
@@ -474,8 +477,6 @@ class isl_trx_b(gr.top_block, Qt.QWidget):
         self.blocks_multiply_const_vxx_0_0 = blocks.multiply_const_vff((2, ))
         self.blocks_multiply_conjugate_cc_0 = blocks.multiply_conjugate_cc(fft_length)
         self.blocks_float_to_complex_0 = blocks.float_to_complex(1)
-        self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_float*1, 'ranging_data.dat', True)
-        self.blocks_file_sink_0.set_unbuffered(True)
         self.blocks_delay_2 = blocks.delay(gr.sizeof_gr_complex*1, 48)
         self.blocks_delay_1 = blocks.delay(gr.sizeof_float*1, 8)
         self.blocks_delay_0 = blocks.delay(gr.sizeof_float*1, 1)
@@ -484,6 +485,12 @@ class isl_trx_b(gr.top_block, Qt.QWidget):
         self.blocks_complex_to_float_0 = blocks.complex_to_float(1)
         self.blocks_char_to_float_0 = blocks.char_to_float(1, 1)
         self.blocks_add_const_vxx_0_0 = blocks.add_const_vff((-1, ))
+        self.blks2_tcp_sink_0 = grc_blks2.tcp_sink(
+        	itemsize=gr.sizeof_float*1,
+        	addr='192.168.43.2.97',
+        	port=60061,
+        	server=False,
+        )
         self.analog_sig_source_x_1 = analog.sig_source_f(samp_rate, analog.GR_COS_WAVE, samp_rate/3, 1, 0)
         self.analog_sig_source_x_0_0 = analog.sig_source_c(200e3, analog.GR_COS_WAVE, -50e3, 1, 0)
         self.analog_sig_source_x_0 = analog.sig_source_c(200e3, analog.GR_COS_WAVE, 50e3, 1, 0)
@@ -544,8 +551,12 @@ class isl_trx_b(gr.top_block, Qt.QWidget):
         self.connect((self.isl_qpsk_decimator_cc_0, 0), (self.blocks_null_sink_0, 0))
         self.connect((self.isl_qpsk_decimator_cc_0, 1), (self.qtgui_const_sink_x_0, 0))
         self.connect((self.isl_qpsk_recover_cc_0, 0), (self.interp_fir_filter_xxx_1, 0))
-        self.connect((self.isl_vector_get_element_ff_0, 0), (self.blocks_file_sink_0, 0))
+        #self.connect((self.isl_vector_get_element_ff_0, 0), (self.low_pass_filter_0, 0))
+        #self.connect((self.low_pass_filter_0, 0), (self.blks2_tcp_sink_0, 0))
+        #self.connect((self.low_pass_filter_0, 0), (self.qtgui_time_sink_x_0, 0))
+        self.connect((self.isl_vector_get_element_ff_0, 0), (self.blks2_tcp_sink_0, 0))
         self.connect((self.isl_vector_get_element_ff_0, 0), (self.qtgui_time_sink_x_0, 0))
+
         self.connect((self.rational_resampler_xxx_0, 0), (self.fft_correlator_hier_0, 0))
         self.connect((self.rational_resampler_xxx_0, 0), (self.qtgui_freq_sink_x_0_0, 0))
         self.connect((self.rational_resampler_xxx_0_0, 0), (self.blocks_multiply_xx_0_0, 0))
@@ -629,6 +640,7 @@ class isl_trx_b(gr.top_block, Qt.QWidget):
         self.samp_rate = samp_rate
         self.qtgui_time_sink_x_0.set_samp_rate(1.0*self.samp_rate/self.fft_length)
         self.qtgui_freq_sink_x_0_0.set_frequency_range(0, self.samp_rate)
+        self.low_pass_filter_0.set_taps(firdes.low_pass(1, 1.0*self.samp_rate/self.fft_length, 1.0, 1.0, firdes.WIN_HAMMING, 6.76))
         self.analog_sig_source_x_1.set_sampling_freq(self.samp_rate)
         self.analog_sig_source_x_1.set_frequency(self.samp_rate/3)
 
@@ -676,6 +688,7 @@ class isl_trx_b(gr.top_block, Qt.QWidget):
     def set_fft_length(self, fft_length):
         self.fft_length = fft_length
         self.qtgui_time_sink_x_0.set_samp_rate(1.0*self.samp_rate/self.fft_length)
+        self.low_pass_filter_0.set_taps(firdes.low_pass(1, 1.0*self.samp_rate/self.fft_length, 1.0, 1.0, firdes.WIN_HAMMING, 6.76))
 
 
 def main(top_block_cls=isl_trx_b, options=None):
