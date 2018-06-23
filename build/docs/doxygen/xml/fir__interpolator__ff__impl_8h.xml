@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="fir__interpolator__ff__impl_8h" kind="file" language="C++">
+    <compoundname>fir_interpolator_ff_impl.h</compoundname>
+    <includes refid="fir__interpolator__ff_8h" local="no">isl/fir_interpolator_ff.h</includes>
+    <incdepgraph>
+      <node id="54">
+        <label>gnuradio/attributes.h</label>
+      </node>
+      <node id="51">
+        <label>fir_interpolator_ff_impl.h</label>
+        <link refid="fir_interpolator_ff_impl.h"/>
+        <childnode refid="52" relation="include">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>isl/fir_interpolator_ff.h</label>
+        <link refid="fir__interpolator__ff_8h"/>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>gnuradio/sync_interpolator.h</label>
+      </node>
+      <node id="53">
+        <label>isl/api.h</label>
+        <link refid="api_8h"/>
+        <childnode refid="54" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classgr_1_1isl_1_1fir__interpolator__ff__impl" prot="public">gr::isl::fir_interpolator_ff_impl</innerclass>
+    <innernamespace refid="namespacegr">gr</innernamespace>
+    <innernamespace refid="namespacegr_1_1isl">gr::isl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/lilac/gr-isl/lib/fir_interpolator_ff_impl.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="namespacegr_1_1isl" kind="namespace" language="C++">
+    <compoundname>gr::isl</compoundname>
+    <innerclass refid="classgr_1_1isl_1_1c1__sys" prot="public">gr::isl::c1_sys</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1c1__sys__impl" prot="public">gr::isl::c1_sys_impl</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1fir__interpolator__ff" prot="public">gr::isl::fir_interpolator_ff</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1fir__interpolator__ff__impl" prot="public">gr::isl::fir_interpolator_ff_impl</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1gmsk__demod" prot="public">gr::isl::gmsk_demod</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1gmsk__demod__impl" prot="public">gr::isl::gmsk_demod_impl</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1oqpsk__coherrent__demod" prot="public">gr::isl::oqpsk_coherrent_demod</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1oqpsk__coherrent__demod__impl" prot="public">gr::isl::oqpsk_coherrent_demod_impl</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1pmod" prot="public">gr::isl::pmod</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1pmod__impl" prot="public">gr::isl::pmod_impl</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1PN__Acquisition" prot="public">gr::isl::PN_Acquisition</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1PN__Acquisition__impl" prot="public">gr::isl::PN_Acquisition_impl</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1PN__correlation" prot="public">gr::isl::PN_correlation</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1PN__correlation__impl" prot="public">gr::isl::PN_correlation_impl</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1pn__correlator" prot="public">gr::isl::pn_correlator</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1pn__correlator__impl" prot="public">gr::isl::pn_correlator_impl</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1pn__decimator__FI" prot="public">gr::isl::pn_decimator_FI</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1pn__decimator__FI__impl" prot="public">gr::isl::pn_decimator_FI_impl</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1pn__generate__i" prot="public">gr::isl::pn_generate_i</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1pn__generate__i__impl" prot="public">gr::isl::pn_generate_i_impl</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1PN__Location" prot="public">gr::isl::PN_Location</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1PN__Location__impl" prot="public">gr::isl::PN_Location_impl</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1qpsk__decimator__cc" prot="public">gr::isl::qpsk_decimator_cc</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1qpsk__decimator__cc__impl" prot="public">gr::isl::qpsk_decimator_cc_impl</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1qpsk__recover__cc" prot="public">gr::isl::qpsk_recover_cc</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1qpsk__recover__cc__impl" prot="public">gr::isl::qpsk_recover_cc_impl</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1vector__ele__sync" prot="public">gr::isl::vector_ele_sync</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1vector__ele__sync__impl" prot="public">gr::isl::vector_ele_sync_impl</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1vector__element" prot="public">gr::isl::vector_element</innerclass>
+    <innerclass refid="classgr_1_1isl_1_1vector__element__impl" prot="public">gr::isl::vector_element_impl</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/lilac/gr-isl/include/isl/c1_sys.h" line="29" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="vector__ele__sync__impl_8h" kind="file" language="C++">
+    <compoundname>vector_ele_sync_impl.h</compoundname>
+    <includes refid="vector__ele__sync_8h" local="no">isl/vector_ele_sync.h</includes>
+    <incdepgraph>
+      <node id="200">
+        <label>isl/vector_ele_sync.h</label>
+        <link refid="vector__ele__sync_8h"/>
+        <childnode refid="201" relation="include">
+        </childnode>
+        <childnode refid="203" relation="include">
+        </childnode>
+      </node>
+      <node id="203">
+        <label>gnuradio/sync_block.h</label>
+      </node>
+      <node id="202">
+        <label>gnuradio/attributes.h</label>
+      </node>
+      <node id="199">
+        <label>vector_ele_sync_impl.h</label>
+        <link refid="vector_ele_sync_impl.h"/>
+        <childnode refid="200" relation="include">
+        </childnode>
+      </node>
+      <node id="201">
+        <label>isl/api.h</label>
+        <link refid="api_8h"/>
+        <childnode refid="202" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classgr_1_1isl_1_1vector__ele__sync__impl" prot="public">gr::isl::vector_ele_sync_impl</innerclass>
+    <innernamespace refid="namespacegr">gr</innernamespace>
+    <innernamespace refid="namespacegr_1_1isl">gr::isl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/lilac/gr-isl/lib/vector_ele_sync_impl.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,323 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classgr_1_1isl_1_1pn__correlator__impl" kind="class" language="C++" prot="public">
+    <compoundname>gr::isl::pn_correlator_impl</compoundname>
+    <basecompoundref refid="classgr_1_1isl_1_1pn__correlator" prot="public" virt="non-virtual">gr::isl::pn_correlator</basecompoundref>
+    <includes refid="pn__correlator__impl_8h" local="no">pn_correlator_impl.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classgr_1_1isl_1_1pn__correlator__impl_1aeb448bd40d1644eb0330323402829a36" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::isl::pn_correlator_impl::L0[214]</definition>
+        <argsstring>[214]</argsstring>
+        <name>L0</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/lilac/gr-isl/lib/pn_correlator_impl.h" line="32" column="1" bodyfile="/home/lilac/gr-isl/lib/pn_correlator_impl.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1isl_1_1pn__correlator__impl_1abe12e4b5c89bf2fc1f0a87ef17d66028" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::isl::pn_correlator_impl::L1[86261]</definition>
+        <argsstring>[86261]</argsstring>
+        <name>L1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/lilac/gr-isl/lib/pn_correlator_impl.h" line="32" column="1" bodyfile="/home/lilac/gr-isl/lib/pn_correlator_impl.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1isl_1_1pn__correlator__impl_1a12b8d0c9ce10052b1d42fcd3d9bd7eca" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::isl::pn_correlator_impl::L2[91619]</definition>
+        <argsstring>[91619]</argsstring>
+        <name>L2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/lilac/gr-isl/lib/pn_correlator_impl.h" line="32" column="1" bodyfile="/home/lilac/gr-isl/lib/pn_correlator_impl.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1isl_1_1pn__correlator__impl_1afe42490daaa6db435e17a25de4c9d60c" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::isl::pn_correlator_impl::L3[94005]</definition>
+        <argsstring>[94005]</argsstring>
+        <name>L3</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/lilac/gr-isl/lib/pn_correlator_impl.h" line="32" column="1" bodyfile="/home/lilac/gr-isl/lib/pn_correlator_impl.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1isl_1_1pn__correlator__impl_1aad88c58953763414fcfc95d4dc21a46b" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::isl::pn_correlator_impl::L4[95475]</definition>
+        <argsstring>[95475]</argsstring>
+        <name>L4</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/lilac/gr-isl/lib/pn_correlator_impl.h" line="32" column="1" bodyfile="/home/lilac/gr-isl/lib/pn_correlator_impl.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1isl_1_1pn__correlator__impl_1aadcc7f5b2e4057c128fdfeca3ffb487c" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::isl::pn_correlator_impl::L5[96347]</definition>
+        <argsstring>[96347]</argsstring>
+        <name>L5</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/lilac/gr-isl/lib/pn_correlator_impl.h" line="32" column="1" bodyfile="/home/lilac/gr-isl/lib/pn_correlator_impl.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1isl_1_1pn__correlator__impl_1aec16010a6846177692099a782aa8bcf2" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::isl::pn_correlator_impl::buf_rx[96347]</definition>
+        <argsstring>[96347]</argsstring>
+        <name>buf_rx</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/lilac/gr-isl/lib/pn_correlator_impl.h" line="34" column="1" bodyfile="/home/lilac/gr-isl/lib/pn_correlator_impl.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1isl_1_1pn__correlator__impl_1a28c4e037cc217dd8e40aeb5944030117" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::isl::pn_correlator_impl::buf_cor0[2]</definition>
+        <argsstring>[2]</argsstring>
+        <name>buf_cor0</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/lilac/gr-isl/lib/pn_correlator_impl.h" line="34" column="1" bodyfile="/home/lilac/gr-isl/lib/pn_correlator_impl.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1isl_1_1pn__correlator__impl_1ab0595ec7dd74de4c9b985ec5bbf85c6f" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::isl::pn_correlator_impl::buf_cor1[7]</definition>
+        <argsstring>[7]</argsstring>
+        <name>buf_cor1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/lilac/gr-isl/lib/pn_correlator_impl.h" line="34" column="1" bodyfile="/home/lilac/gr-isl/lib/pn_correlator_impl.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1isl_1_1pn__correlator__impl_1a7317782f38e16f64530b0d4b077840c7" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::isl::pn_correlator_impl::buf_cor2[11]</definition>
+        <argsstring>[11]</argsstring>
+        <name>buf_cor2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/lilac/gr-isl/lib/pn_correlator_impl.h" line="34" column="1" bodyfile="/home/lilac/gr-isl/lib/pn_correlator_impl.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1isl_1_1pn__correlator__impl_1a2e7f5bf83e400b94870f8da0473b7d60" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::isl::pn_correlator_impl::buf_cor3[15]</definition>
+        <argsstring>[15]</argsstring>
+        <name>buf_cor3</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/lilac/gr-isl/lib/pn_correlator_impl.h" line="34" column="1" bodyfile="/home/lilac/gr-isl/lib/pn_correlator_impl.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1isl_1_1pn__correlator__impl_1accc8580d3fdb8c46c59012d446e39783" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::isl::pn_correlator_impl::buf_cor4[19]</definition>
+        <argsstring>[19]</argsstring>
+        <name>buf_cor4</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/lilac/gr-isl/lib/pn_correlator_impl.h" line="34" column="1" bodyfile="/home/lilac/gr-isl/lib/pn_correlator_impl.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1isl_1_1pn__correlator__impl_1ac6bd888923e8204c3ae5a37e45d0dd75" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::isl::pn_correlator_impl::buf_cor5[23]</definition>
+        <argsstring>[23]</argsstring>
+        <name>buf_cor5</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/lilac/gr-isl/lib/pn_correlator_impl.h" line="34" column="1" bodyfile="/home/lilac/gr-isl/lib/pn_correlator_impl.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classgr_1_1isl_1_1pn__correlator__impl_1a3c589ece940cec908f7c97ba913cce7f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gr::isl::pn_correlator_impl::max</definition>
+        <argsstring>(int *data, int len, int *max_value, int *max_index)</argsstring>
+        <name>max</name>
+        <param>
+          <type>int *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>len</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>max_value</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>max_index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/lilac/gr-isl/lib/pn_correlator_impl.h" line="33" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classgr_1_1isl_1_1pn__correlator__impl_1a5f7e2fcad74ca1dec2e15e4cfd4f99c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gr::isl::pn_correlator_impl::pn_correlator_impl</definition>
+        <argsstring>()</argsstring>
+        <name>pn_correlator_impl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/lilac/gr-isl/lib/pn_correlator_impl.h" line="37" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1isl_1_1pn__correlator__impl_1a6be57f888ef0ef8dedd3a2ae6b05570a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gr::isl::pn_correlator_impl::~pn_correlator_impl</definition>
+        <argsstring>()</argsstring>
+        <name>~pn_correlator_impl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/lilac/gr-isl/lib/pn_correlator_impl.h" line="38" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1isl_1_1pn__correlator__impl_1a584c97569dcd34f76bfbe429716b6b6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::isl::pn_correlator_impl::work</definition>
+        <argsstring>(int noutput_items, gr_vector_const_void_star &amp;input_items, gr_vector_void_star &amp;output_items)</argsstring>
+        <name>work</name>
+        <param>
+          <type>int</type>
+          <declname>noutput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_const_void_star &amp;</type>
+          <declname>input_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_void_star &amp;</type>
+          <declname>output_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/lilac/gr-isl/lib/pn_correlator_impl.h" line="41" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="84">
+        <label>gr::isl::pn_correlator_impl</label>
+        <link refid="classgr_1_1isl_1_1pn__correlator__impl"/>
+        <childnode refid="85" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="86">
+        <label>sync_block</label>
+      </node>
+      <node id="85">
+        <label>gr::isl::pn_correlator</label>
+        <link refid="classgr_1_1isl_1_1pn__correlator"/>
+        <childnode refid="86" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="87">
+        <label>gr::isl::pn_correlator_impl</label>
+        <link refid="classgr_1_1isl_1_1pn__correlator__impl"/>
+        <childnode refid="88" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="89">
+        <label>sync_block</label>
+      </node>
+      <node id="88">
+        <label>gr::isl::pn_correlator</label>
+        <link refid="classgr_1_1isl_1_1pn__correlator"/>
+        <childnode refid="89" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/lilac/gr-isl/lib/pn_correlator_impl.h" line="30" column="1" bodyfile="/home/lilac/gr-isl/lib/pn_correlator_impl.h" bodystart="29" bodyend="44"/>
+    <listofallmembers>
+      <member refid="classgr_1_1isl_1_1pn__correlator__impl_1a28c4e037cc217dd8e40aeb5944030117" prot="private" virt="non-virtual"><scope>gr::isl::pn_correlator_impl</scope><name>buf_cor0</name></member>
+      <member refid="classgr_1_1isl_1_1pn__correlator__impl_1ab0595ec7dd74de4c9b985ec5bbf85c6f" prot="private" virt="non-virtual"><scope>gr::isl::pn_correlator_impl</scope><name>buf_cor1</name></member>
+      <member refid="classgr_1_1isl_1_1pn__correlator__impl_1a7317782f38e16f64530b0d4b077840c7" prot="private" virt="non-virtual"><scope>gr::isl::pn_correlator_impl</scope><name>buf_cor2</name></member>
+      <member refid="classgr_1_1isl_1_1pn__correlator__impl_1a2e7f5bf83e400b94870f8da0473b7d60" prot="private" virt="non-virtual"><scope>gr::isl::pn_correlator_impl</scope><name>buf_cor3</name></member>
+      <member refid="classgr_1_1isl_1_1pn__correlator__impl_1accc8580d3fdb8c46c59012d446e39783" prot="private" virt="non-virtual"><scope>gr::isl::pn_correlator_impl</scope><name>buf_cor4</name></member>
+      <member refid="classgr_1_1isl_1_1pn__correlator__impl_1ac6bd888923e8204c3ae5a37e45d0dd75" prot="private" virt="non-virtual"><scope>gr::isl::pn_correlator_impl</scope><name>buf_cor5</name></member>
+      <member refid="classgr_1_1isl_1_1pn__correlator__impl_1aec16010a6846177692099a782aa8bcf2" prot="private" virt="non-virtual"><scope>gr::isl::pn_correlator_impl</scope><name>buf_rx</name></member>
+      <member refid="classgr_1_1isl_1_1pn__correlator__impl_1aeb448bd40d1644eb0330323402829a36" prot="private" virt="non-virtual"><scope>gr::isl::pn_correlator_impl</scope><name>L0</name></member>
+      <member refid="classgr_1_1isl_1_1pn__correlator__impl_1abe12e4b5c89bf2fc1f0a87ef17d66028" prot="private" virt="non-virtual"><scope>gr::isl::pn_correlator_impl</scope><name>L1</name></member>
+      <member refid="classgr_1_1isl_1_1pn__correlator__impl_1a12b8d0c9ce10052b1d42fcd3d9bd7eca" prot="private" virt="non-virtual"><scope>gr::isl::pn_correlator_impl</scope><name>L2</name></member>
+      <member refid="classgr_1_1isl_1_1pn__correlator__impl_1afe42490daaa6db435e17a25de4c9d60c" prot="private" virt="non-virtual"><scope>gr::isl::pn_correlator_impl</scope><name>L3</name></member>
+      <member refid="classgr_1_1isl_1_1pn__correlator__impl_1aad88c58953763414fcfc95d4dc21a46b" prot="private" virt="non-virtual"><scope>gr::isl::pn_correlator_impl</scope><name>L4</name></member>
+      <member refid="classgr_1_1isl_1_1pn__correlator__impl_1aadcc7f5b2e4057c128fdfeca3ffb487c" prot="private" virt="non-virtual"><scope>gr::isl::pn_correlator_impl</scope><name>L5</name></member>
+      <member refid="classgr_1_1isl_1_1pn__correlator_1a839c0cfcaabae3018c9c4105ceaa4f5a" prot="public" virt="non-virtual"><scope>gr::isl::pn_correlator_impl</scope><name>make</name></member>
+      <member refid="classgr_1_1isl_1_1pn__correlator__impl_1a3c589ece940cec908f7c97ba913cce7f" prot="private" virt="non-virtual"><scope>gr::isl::pn_correlator_impl</scope><name>max</name></member>
+      <member refid="classgr_1_1isl_1_1pn__correlator__impl_1a5f7e2fcad74ca1dec2e15e4cfd4f99c2" prot="public" virt="non-virtual"><scope>gr::isl::pn_correlator_impl</scope><name>pn_correlator_impl</name></member>
+      <member refid="classgr_1_1isl_1_1pn__correlator_1ab7c1569e7d5a86a595f707097e53eddd" prot="public" virt="non-virtual"><scope>gr::isl::pn_correlator_impl</scope><name>sptr</name></member>
+      <member refid="classgr_1_1isl_1_1pn__correlator__impl_1a584c97569dcd34f76bfbe429716b6b6e" prot="public" virt="non-virtual"><scope>gr::isl::pn_correlator_impl</scope><name>work</name></member>
+      <member refid="classgr_1_1isl_1_1pn__correlator__impl_1a6be57f888ef0ef8dedd3a2ae6b05570a" prot="public" virt="non-virtual"><scope>gr::isl::pn_correlator_impl</scope><name>~pn_correlator_impl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

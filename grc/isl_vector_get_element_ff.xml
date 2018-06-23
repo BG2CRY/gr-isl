@@ -1,0 +1,26 @@
+<block>
+  <name>Vector Get Element FF</name>
+  <key>isl_vector_get_element_ff</key>
+  <category>[ISL]</category>
+  <import>import isl</import>
+  <make>isl.vector_get_element_ff($vector_length, $location)</make>
+  <param>
+    <name>Vector Length</name>
+    <key>vector_length</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Location</name>
+    <key>location</key>
+    <type>int</type>
+  </param>
+  <sink>
+    <name>in</name>
+    <type>float</type>
+    <vlen>$vector_length</vlen>
+  </sink>
+  <source>
+    <name>out</name>
+    <type>float</type>
+  </source>
+</block>

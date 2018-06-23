@@ -35,5 +35,5 @@ install(FILES
     gmsk_demod.h
     qpsk_recover_cc.h
     fir_interpolator_ff.h
-    vector_element.h DESTINATION include/isl
+    vector_get_element_ff.h DESTINATION include/isl
 )
