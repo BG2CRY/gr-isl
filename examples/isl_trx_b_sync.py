@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 ##################################################
 # GNU Radio Python Flow Graph
-# Title: ISL_TRX_A
-# Generated: Fri Jun 22 16:27:17 2018
+# Title: ISL_TRX_B
+# Generated: Sat Jun 23 16:16:57 2018
 ##################################################
 
 if __name__ == '__main__':
@@ -44,12 +44,12 @@ import time
 from gnuradio import qtgui
 
 
-class isl_trx_a(gr.top_block, Qt.QWidget):
+class isl_trx_b(gr.top_block, Qt.QWidget):
 
     def __init__(self):
-        gr.top_block.__init__(self, "ISL_TRX_A")
+        gr.top_block.__init__(self, "ISL_TRX_B")
         Qt.QWidget.__init__(self)
-        self.setWindowTitle("ISL_TRX_A")
+        self.setWindowTitle("ISL_TRX_B")
         qtgui.util.check_set_qss()
         try:
             self.setWindowIcon(Qt.QIcon.fromTheme('gnuradio-grc'))
@@ -67,14 +67,14 @@ class isl_trx_a(gr.top_block, Qt.QWidget):
         self.top_grid_layout = Qt.QGridLayout()
         self.top_layout.addLayout(self.top_grid_layout)
 
-        self.settings = Qt.QSettings("GNU Radio", "isl_trx_a")
+        self.settings = Qt.QSettings("GNU Radio", "isl_trx_b")
         self.restoreGeometry(self.settings.value("geometry").toByteArray())
 
         ##################################################
         # Variables
         ##################################################
         self.sps = sps = 8
-        self.ebn0_threshold = ebn0_threshold = 5
+        self.ebn0_threshold = ebn0_threshold = 0
         self.ebn0 = ebn0 = 100
         self.ymin = ymin = -4
         self.ymax = ymax = 4
@@ -83,7 +83,7 @@ class isl_trx_a(gr.top_block, Qt.QWidget):
         self.snr_threshold = snr_threshold = 10.0**(ebn0_threshold/10.0)/sps
         self.snr = snr = 10.0**(ebn0/10.0)/sps
         self.samp_rate = samp_rate = 50000
-        self.rx_offset = rx_offset = 8000
+        self.rx_offset = rx_offset = -8000
         self.rx_gain = rx_gain = 40
         self.pll_loop_bw = pll_loop_bw = 50
         self.mrg = mrg = 0.14*3.14
@@ -146,7 +146,7 @@ class isl_trx_a(gr.top_block, Qt.QWidget):
         self.uhd_usrp_source_0.set_subdev_spec('A:A', 0)
         self.uhd_usrp_source_0.set_samp_rate(200e3)
         self.uhd_usrp_source_0.set_time_now(uhd.time_spec(time.time()), uhd.ALL_MBOARDS)
-        self.uhd_usrp_source_0.set_center_freq(2.05e9+50e3+rx_offset, 0)
+        self.uhd_usrp_source_0.set_center_freq(2.25e9+50e3+rx_offset, 0)
         self.uhd_usrp_source_0.set_start_time(uhd.time_spec(stime+5)) # sync
         self.uhd_usrp_source_0.set_gain(rx_gain, 0)
         self.uhd_usrp_source_0.set_antenna('RX2', 0)
@@ -160,7 +160,7 @@ class isl_trx_a(gr.top_block, Qt.QWidget):
         self.uhd_usrp_sink_0_0.set_subdev_spec('A:B', 0)
         self.uhd_usrp_sink_0_0.set_samp_rate(200e3)
         self.uhd_usrp_sink_0_0.set_time_now(uhd.time_spec(time.time()), uhd.ALL_MBOARDS)
-        self.uhd_usrp_sink_0_0.set_center_freq(2.250e9+50e3, 0)
+        self.uhd_usrp_sink_0_0.set_center_freq(2.050e9+50e3, 0)
         self.uhd_usrp_sink_0_0.set_start_time(uhd.time_spec(stime+5)) # sync
         self.uhd_usrp_sink_0_0.set_gain(tx_gain, 0)
         self.uhd_usrp_sink_0_0.set_antenna('TX/RX', 0)
@@ -429,8 +429,6 @@ class isl_trx_a(gr.top_block, Qt.QWidget):
 
         self._qtgui_const_sink_x_0_win = sip.wrapinstance(self.qtgui_const_sink_x_0.pyqwidget(), Qt.QWidget)
         self.top_grid_layout.addWidget(self._qtgui_const_sink_x_0_win, 1,1,1,1)
-        self.low_pass_filter_0 = filter.fir_filter_fff(1, firdes.low_pass(
-        	1, 1.0*samp_rate/fft_length, 1.0, 1.0, firdes.WIN_HAMMING, 6.76))
         self.isl_vector_get_element_ff_0 = isl.vector_get_element_ff(fft_length, fft_length/3)
         self.isl_qpsk_recover_cc_0 = isl.qpsk_recover_cc()
         self.isl_qpsk_decimator_cc_0 = isl.qpsk_decimator_cc()
@@ -488,7 +486,7 @@ class isl_trx_a(gr.top_block, Qt.QWidget):
         self.blks2_tcp_sink_0 = grc_blks2.tcp_sink(
         	itemsize=gr.sizeof_float*1,
         	addr='192.168.2.97',
-        	port=60060,
+        	port=60061,
         	server=False,
         )
         self.analog_sig_source_x_1 = analog.sig_source_f(samp_rate, analog.GR_COS_WAVE, samp_rate/3, 1, 0)
@@ -551,19 +549,15 @@ class isl_trx_a(gr.top_block, Qt.QWidget):
         self.connect((self.isl_qpsk_decimator_cc_0, 0), (self.blocks_null_sink_0, 0))
         self.connect((self.isl_qpsk_decimator_cc_0, 1), (self.qtgui_const_sink_x_0, 0))
         self.connect((self.isl_qpsk_recover_cc_0, 0), (self.interp_fir_filter_xxx_1, 0))
-        #self.connect((self.isl_vector_get_element_ff_0, 0), (self.low_pass_filter_0, 0))
-        #self.connect((self.low_pass_filter_0, 0), (self.blks2_tcp_sink_0, 0))
-        #self.connect((self.low_pass_filter_0, 0), (self.qtgui_time_sink_x_0, 0))
         self.connect((self.isl_vector_get_element_ff_0, 0), (self.blks2_tcp_sink_0, 0))
         self.connect((self.isl_vector_get_element_ff_0, 0), (self.qtgui_time_sink_x_0, 0))
-
         self.connect((self.rational_resampler_xxx_0, 0), (self.fft_correlator_hier_0, 0))
         self.connect((self.rational_resampler_xxx_0, 0), (self.qtgui_freq_sink_x_0_0, 0))
         self.connect((self.rational_resampler_xxx_0_0, 0), (self.blocks_multiply_xx_0_0, 0))
         self.connect((self.uhd_usrp_source_0, 0), (self.blocks_multiply_xx_0, 0))
 
     def closeEvent(self, event):
-        self.settings = Qt.QSettings("GNU Radio", "isl_trx_a")
+        self.settings = Qt.QSettings("GNU Radio", "isl_trx_b")
         self.settings.setValue("geometry", self.saveGeometry())
         event.accept()
 
@@ -640,7 +634,6 @@ class isl_trx_a(gr.top_block, Qt.QWidget):
         self.samp_rate = samp_rate
         self.qtgui_time_sink_x_0.set_samp_rate(1.0*self.samp_rate/self.fft_length)
         self.qtgui_freq_sink_x_0_0.set_frequency_range(0, self.samp_rate)
-        self.low_pass_filter_0.set_taps(firdes.low_pass(1, 1.0*self.samp_rate/self.fft_length, 1.0, 1.0, firdes.WIN_HAMMING, 6.76))
         self.analog_sig_source_x_1.set_sampling_freq(self.samp_rate)
         self.analog_sig_source_x_1.set_frequency(self.samp_rate/3)
 
@@ -650,7 +643,7 @@ class isl_trx_a(gr.top_block, Qt.QWidget):
     def set_rx_offset(self, rx_offset):
         self.rx_offset = rx_offset
         Qt.QMetaObject.invokeMethod(self._rx_offset_line_edit, "setText", Qt.Q_ARG("QString", eng_notation.num_to_str(self.rx_offset)))
-        self.uhd_usrp_source_0.set_center_freq(2.05e9+50e3+self.rx_offset, 0)
+        self.uhd_usrp_source_0.set_center_freq(2.25e9+50e3+self.rx_offset, 0)
 
     def get_rx_gain(self):
         return self.rx_gain
@@ -688,10 +681,9 @@ class isl_trx_a(gr.top_block, Qt.QWidget):
     def set_fft_length(self, fft_length):
         self.fft_length = fft_length
         self.qtgui_time_sink_x_0.set_samp_rate(1.0*self.samp_rate/self.fft_length)
-        self.low_pass_filter_0.set_taps(firdes.low_pass(1, 1.0*self.samp_rate/self.fft_length, 1.0, 1.0, firdes.WIN_HAMMING, 6.76))
 
 
-def main(top_block_cls=isl_trx_a, options=None):
+def main(top_block_cls=isl_trx_b, options=None):
 
     from distutils.version import StrictVersion
     if StrictVersion(Qt.qVersion()) >= StrictVersion("4.5.0"):
